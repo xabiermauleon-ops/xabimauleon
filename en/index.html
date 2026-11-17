@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Art direction, brand and digital product. I make digital product. I audit UX/UI and accessibility. I improve processes.">
+<meta name="author" content="Xabier Mauleón">
+<link rel="canonical" href="https://xabimauleon.netlify.app/en/">
+<link rel="alternate" hreflang="es" href="https://xabimauleon.netlify.app/">
+<link rel="alternate" hreflang="en" href="https://xabimauleon.netlify.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://xabimauleon.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xabier Mauleón">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:url" content="https://xabimauleon.netlify.app/en/">
+<meta property="og:title" content="Xabier Mauleón — Art direction, brand and digital product">
+<meta property="og:description" content="Art direction, brand and digital product. I make digital product. I audit UX/UI and accessibility. I improve processes.">
+<meta property="og:image" content="https://xabimauleon.netlify.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Xabier Mauleón — Art direction, brand and digital product">
+<meta name="twitter:description" content="Art direction, brand and digital product. I make digital product. I audit UX/UI and accessibility. I improve processes.">
+<meta name="twitter:image" content="https://xabimauleon.netlify.app/og.jpg">
+<meta name="theme-color" content="#B1AAA3">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icono-180.png">
+<title>Xabier Mauleón — Art direction, brand and digital product</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;800&display=swap">
+<style>
+/* =====================================================================
+   Esto es el frame «Home · escritorio — v3» del Figma, punto por punto.
+   Suelo #B1AAA3, iniciales #0C0B0A, texto #FBF1EC, Host Grotesk.
+   Las coordenadas son las de Figma multiplicadas por --k, que vale 1 a
+   1440. No hay ni un color ni un cuerpo inventado.
+   ===================================================================== */
+:root{
+  --suelo:#B1AAA3;
+  --negro:#0C0B0A;
+  --hueso:#FBF1EC;
+  --k:clamp(0.42px,0.06944vw,1.9px);   /* 1 a 1440; la hoja sigue llenando la pantalla hasta 2736 */
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0;overflow-x:hidden;background:var(--suelo);color:var(--hueso);
+  font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight:500;letter-spacing:-0.02em;
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+
+/* ---------- la hoja: el frame de 1440 × 2088 ---------- */
+/* por encima de 1800 px la --k deja de crecer, así que la hoja se fija a
+   su anchura de diseño y se centra en vez de quedarse pegada a la izquierda */
+.hoja{
+  position:relative;width:calc(var(--k) * 1440);max-width:100%;margin:0 auto;overflow:visible;
+  /* 2369 hasta el índice + las filas que haya (60 escalados y el filete de 1 px) + 130 de aire */
+  height:calc(var(--k) * 2369 + var(--filas,3) * (var(--k) * 60 + 1px) + var(--k) * 130);
+}
+.hoja > *{position:absolute;z-index:1}
+
+/* las letras bajan solas, en bucle, sin tocar el scroll: tres copias
+   apiladas y un desplazamiento de exactamente una copia, así la vuelta
+   al principio no se ve */
+/* el marco está quieto y recorta; dentro, el dibujo deriva. La masa
+   recorre la hoja entera y pasa por debajo de todo: la tabla va en
+   hueso, así que cuando una letra cruza por detrás el contraste sube
+   de 3,6:1 sobre el topo a 17,7:1 sobre el negro */
+.masa-marco{
+  top:0;bottom:0;left:15%;width:72.92%;overflow:hidden;
+  z-index:0 !important;pointer-events:none;
+}
+.marca{
+  position:absolute;top:0;left:0;width:100%;
+  will-change:transform;animation:deriva 110s linear infinite;
+}
+.marca svg{display:block;width:100%;height:auto}
+@keyframes deriva{from{transform:translate3d(0,-33.3333%,0)}to{transform:translate3d(0,0,0)}}
+
+/* ---------- barra ---------- */
+/* ---------- barra ---------- */
+.firma{left:calc(var(--k) * 40);top:calc(var(--k) * 26);font-size:calc(var(--k) * 15);font-weight:600;line-height:calc(var(--k) * 17);margin:0}
+.oficio{left:calc(var(--k) * 40);top:calc(var(--k) * 45);font-size:calc(var(--k) * 13);line-height:calc(var(--k) * 15);margin:0;color:rgba(251,241,236,.72)}
+.nav{right:calc(var(--k) * 40);top:calc(var(--k) * 46);display:flex;gap:calc(var(--k) * 30);font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17)}
+.nav a{color:var(--hueso);text-decoration:none;transition:opacity 220ms ease}
+.nav a:hover,.nav a:focus-visible{opacity:.6;outline:none}
+.nav sup{font-size:9px;line-height:10px;vertical-align:super;margin-left:1px}
+.nav a.idioma{color:rgba(251,241,236,.62)}
+.nav a.idioma:hover,.nav a.idioma:focus-visible{color:var(--hueso);opacity:1}
+
+/* ---------- entrada ---------- */
+.r1{left:calc(var(--k) * 40);top:calc(var(--k) * 223)}
+.r2{left:calc(var(--k) * 40);top:calc(var(--k) * 697)}
+.rot{font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17);color:rgba(251,241,236,.78);margin:0}
+.q1{left:calc(var(--k) * 372);top:calc(var(--k) * 204);width:calc(var(--k) * 720)}
+.q2{left:calc(var(--k) * 626);top:calc(var(--k) * 695);width:calc(var(--k) * 606)}
+.dice{margin:0;font-size:calc(var(--k) * 40);line-height:calc(var(--k) * 44);letter-spacing:-0.025em}
+/* el párrafo largo: cuerpo pequeño y columna estrecha, como en el Figma */
+.parrafo{margin:0;font-size:calc(var(--k) * 18);line-height:calc(var(--k) * 22);letter-spacing:-0.01em}
+.parrafo + .parrafo{margin-top:calc(var(--k) * 22)}
+.retrato{
+  left:calc(var(--k) * 1168);top:calc(var(--k) * 84);
+  width:calc(var(--k) * 232);height:calc(var(--k) * 300);
+  background:#6E6459 url(../img/retrato.webp) center/cover no-repeat;filter:grayscale(1);
+}
+.marca-a{left:calc(var(--k) * 40);top:calc(var(--k) * 448)}
+.marca-b{left:calc(var(--k) * 624);top:calc(var(--k) * 448)}
+.gigante{margin:0;font-size:calc(var(--k) * 112);line-height:calc(var(--k) * 112);letter-spacing:-0.045em;white-space:nowrap}
+
+/* ---------- la obra ---------- */
+.o1{left:calc(var(--k) * 40);top:calc(var(--k) * 1004)}
+.o2{left:calc(var(--k) * 96);top:calc(var(--k) * 1004);color:rgba(251,241,236,.72)}
+.o3{right:calc(var(--k) * 40);top:calc(var(--k) * 1004);color:rgba(251,241,236,.72)}
+.lista{
+  left:calc(var(--k) * 40);top:calc(var(--k) * 1000);width:calc(var(--k) * 1360);
+  list-style:none;margin:0;padding:0;z-index:1;
+}
+/* la lupa: el nombre al que apuntas crece y los demás encogen, todos
+   sobre el mismo eje central. Se escala con transform y no con cuerpo
+   para no rehacer la maqueta de la página en cada fotograma. */
+.pieza{
+  display:block;width:100%;text-align:center;
+  font-size:calc(var(--k) * 76);line-height:calc(var(--k) * 84);letter-spacing:-0.035em;
+  color:rgba(251,241,236,.56);
+  transition:color 520ms cubic-bezier(.22,.61,.36,1);
+}
+.pieza .n{
+  display:inline-block;transform-origin:50% 50%;
+  transition:transform 600ms cubic-bezier(.22,.7,.28,1);
+}
+.lista.abierta .pieza{color:rgba(251,241,236,.34)}
+.lista.abierta .pieza .n{transform:scale(.9)}
+.pieza.viva,.lista.abierta .pieza.viva{color:var(--hueso)}
+.lista.abierta .pieza.viva .n{transform:scale(1.14)}
+.pieza:focus-visible{outline:2px solid var(--hueso);outline-offset:2px}
+/* la miniatura es la misma pieza que verás dentro: un objeto completo
+   sobre su plinto, no un recorte de una foto */
+/* la ficha vive en el margen derecho: nunca tapa el nombre activo,
+   que a su vez se desplaza al margen izquierdo */
+.ficha{
+  margin:0;left:0;right:0;z-index:2 !important;
+  display:flex;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 420ms cubic-bezier(.22,.61,.36,1);
+}
+.ficha.puesta{opacity:1}
+.pie{
+  margin:0;display:flex;gap:calc(var(--k) * 16);
+  font-size:15px;line-height:17px;color:rgba(251,241,236,.72);
+}
+.pie .num{color:var(--hueso)}
+
+/* ---------- cierre ---------- */
+.cierre{margin:0;left:calc(var(--k) * 40);top:calc(var(--k) * 1640);font-size:calc(var(--k) * 76);line-height:calc(var(--k) * 80);letter-spacing:-0.045em;white-space:nowrap}
+.correo{margin:0;right:calc(var(--k) * 40);top:calc(var(--k) * 1715);font-size:calc(var(--k) * 22);line-height:calc(var(--k) * 25)}
+.correo a{color:var(--hueso);text-decoration:none}
+.correo a:hover,.correo a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.leg-a{left:calc(var(--k) * 40);top:calc(var(--k) * 1798)}
+.leg-b{right:calc(var(--k) * 40);top:calc(var(--k) * 1798)}
+.pie-texto{left:calc(var(--k) * 286);top:calc(var(--k) * 1798);width:calc(var(--k) * 606);color:rgba(251,241,236,.72)}
+
+/* ---------- segundo bloque: lo que no son casos, es trayectoria ---------- */
+.cierre2{margin:0;left:calc(var(--k) * 40);top:calc(var(--k) * 2170);font-size:calc(var(--k) * 76);line-height:calc(var(--k) * 80);letter-spacing:-0.045em;white-space:nowrap}
+.e1{left:calc(var(--k) * 40);top:calc(var(--k) * 2316)}
+.e2{left:calc(var(--k) * 124);top:calc(var(--k) * 2316);color:rgba(251,241,236,.72)}
+/* la tabla de más producto: tinta negra sobre el topo, otro registro */
+/* el cierre es un bloque aparte: la hoja se vuelve negra, las iniciales
+   se disuelven dentro de ella y el índice queda sobre fondo propio */
+.banda{left:50%;transform:translateX(-50%);width:100vw;top:calc(var(--k) * 2066);bottom:0;background:var(--negro)}
+/* índice seco: nombre y año, dos columnas. No se despliega: es el rastro
+   de veinte años, no seis casos más compitiendo con los de arriba. */
+.tabla{
+  left:calc(var(--k) * 40);top:calc(var(--k) * 2369);width:calc(var(--k) * 1360);
+  list-style:none;margin:0;padding:0;color:var(--hueso);
+  display:grid;grid-auto-flow:column;
+  grid-template-rows:repeat(var(--filas,3),auto);
+  column-gap:calc(var(--k) * 80);
+}
+.tabla li{border-top:1px solid rgba(251,241,236,.22)}
+.fila{
+  display:flex;justify-content:space-between;align-items:baseline;width:100%;
+  gap:calc(var(--k) * 24);padding:calc(var(--k) * 17) 0;
+  text-align:left;color:inherit;cursor:pointer;
+  transition:opacity 420ms cubic-bezier(.22,.61,.36,1);
+}
+.tabla:hover .fila{opacity:.44}
+.tabla .fila:hover,.tabla .fila:focus-visible{opacity:1}
+.fila:focus-visible{outline:2px solid var(--hueso);outline-offset:3px}
+.f-n{font-size:calc(var(--k) * 20);line-height:calc(var(--k) * 26);font-weight:500;letter-spacing:-0.02em}
+.f-a{
+  flex:0 0 auto;font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 19);
+  font-weight:400;letter-spacing:0;color:rgba(251,241,236,.52);font-variant-numeric:tabular-nums;
+}
+.fila:focus-visible{outline:2px solid var(--hueso);outline-offset:2px}
+.leg{margin:0;font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17);color:rgba(251,241,236,.72)}
+.leg a{color:inherit;text-decoration:none}
+.leg a:hover{text-decoration:underline}
+
+/* =====================================================================
+   LA VENTANA
+   No es otra página: se abre aquí mismo, desde la fila que pulsas, hacia
+   arriba y hacia abajo a la vez. El recorte va de una línea sin altura a
+   la pantalla entera; el contenido no se deforma porque lo que se mueve
+   es el recorte, no la caja.
+   ===================================================================== */
+.ventana{
+  position:fixed;inset:0;z-index:300;background:var(--negro);
+  visibility:hidden;overflow-y:auto;overscroll-behavior:contain;
+  clip-path:inset(var(--arriba,50%) 0 var(--abajo,50%) 0);
+  transition:clip-path 620ms cubic-bezier(.33,.9,.2,1),visibility 0s linear 620ms;
+}
+.ventana.abierta{visibility:visible;clip-path:inset(0 0 0 0);transition:clip-path 700ms cubic-bezier(.16,.86,.24,1),visibility 0s}
+.v-dentro{opacity:0;transition:opacity 240ms ease}
+.ventana.abierta .v-dentro{opacity:1;transition:opacity 380ms ease 320ms}
+.v-barra{
+  position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:baseline;
+  gap:16px;padding:calc(var(--k) * 26) calc(var(--k) * 40) calc(var(--k) * 20);
+  background:var(--negro);
+  font-size:15px;line-height:17px;color:rgba(251,241,236,.72);
+}
+.v-barra nav{display:flex;gap:calc(var(--k) * 30)}
+.v-barra button:disabled{opacity:.38;cursor:default}
+.v-barra .x{color:var(--hueso);text-decoration:underline;text-underline-offset:3px}
+.v-caja{padding:0 calc(var(--k) * 40) calc(var(--k) * 92)}
+.v-caja h1{margin:0;font-size:calc(var(--k) * 54);line-height:calc(var(--k) * 56);letter-spacing:-0.035em;font-weight:500;text-wrap:balance}
+.v-caja h1 .anio{color:rgba(251,241,236,.3)}
+.v-ficha{display:flex;gap:calc(var(--k) * 40);margin-top:calc(var(--k) * 18);font-size:15px;line-height:17px;color:rgba(251,241,236,.72)}
+.v-pro{margin:calc(var(--k) * 30) 0 0;max-width:calc(var(--k) * 900);font-size:calc(var(--k) * 29);line-height:calc(var(--k) * 35);letter-spacing:-0.022em;text-wrap:pretty}
+/* el montaje: una tira de piezas de distinta proporción y la misma altura,
+   pegadas unas a otras, como en la referencia */
+.v-obra{
+  margin-top:calc(var(--k) * 44);
+  display:flex;gap:calc(var(--k) * 10);align-items:stretch;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+  padding-bottom:calc(var(--k) * 4);
+}
+.v-obra::-webkit-scrollbar{display:none}
+/* la fila de piezas se desplaza a lo ancho y eso no se ve: los puntos
+   dicen cuántas hay y en cuál estás. Sólo aparecen si de verdad sobra
+   contenido por el lado */
+.v-puntos{display:none;margin-top:calc(var(--k) * 10);margin-left:calc(var(--k) * -10)}
+.v-puntos.hay{display:flex;align-items:center}
+.v-puntos button{
+  width:calc(var(--k) * 20);height:calc(var(--k) * 20);
+  padding:0;border:0;background:none;cursor:pointer;position:relative;
+}
+.v-puntos button::after{
+  content:'';position:absolute;left:50%;top:50%;
+  width:calc(var(--k) * 7);height:calc(var(--k) * 7);
+  margin:calc(var(--k) * -3.5) 0 0 calc(var(--k) * -3.5);
+  border-radius:50%;background:rgba(251,241,236,.3);
+  transition:background 280ms ease,transform 280ms cubic-bezier(.22,.7,.28,1);
+}
+.v-puntos button.on::after{background:var(--hueso);transform:scale(1.3)}
+.v-puntos button:focus-visible{outline:1px solid rgba(251,241,236,.6);outline-offset:0;border-radius:50%}
+/* cada pieza va montada sobre su propio plinto: la pantalla no toca
+   el fondo del panel, respira dentro de un bloque neutro */
+.mk{
+  margin:0;flex:0 0 auto;height:calc(var(--k) * 560);
+  display:flex;align-items:center;justify-content:center;
+  padding:calc(var(--k) * 52) calc(var(--k) * 58);
+  background:#1B1715;
+}
+/* dos objetos, un solo plinto: teléfono donde hay diseño de móvil,
+   ventana de navegador donde el producto es de escritorio. Ninguno
+   de los dos se recorta: siempre es una pantalla entera */
+.mk{--alto:calc(var(--k) * 456)}   /* alto útil dentro del plinto */
+.vent{
+  display:flex;flex-direction:column;width:max-content;
+  border-radius:calc(var(--k) * 12);overflow:hidden;
+  box-shadow:0 calc(var(--k) * 26) calc(var(--k) * 64) rgba(0,0,0,.6);
+}
+.vent i{
+  display:block;
+  background-color:#0C0B0A;background-size:cover;background-position:top center;
+  background-repeat:no-repeat;
+}
+/* la ventana descuenta su barra y el teléfono su marco, para que la
+   pantalla conserve su proporción exacta en los dos casos */
+.mk.esc .vent i{height:calc(var(--alto) - var(--k) * 30);width:calc((var(--alto) - var(--k) * 30) * var(--r,1.6))}
+.mk.tel .vent i{height:calc(var(--alto) - var(--k) * 10);width:calc((var(--alto) - var(--k) * 10) * var(--r,0.46))}
+.barra{
+  flex:0 0 auto;height:calc(var(--k) * 30);background:#2A2724;
+  display:flex;align-items:center;padding-left:calc(var(--k) * 13);
+}
+.barra::before{
+  content:'';width:calc(var(--k) * 8);height:calc(var(--k) * 8);border-radius:50%;
+  background:rgba(251,241,236,.24);
+  box-shadow:calc(var(--k) * 14) 0 0 rgba(251,241,236,.24),calc(var(--k) * 28) 0 0 rgba(251,241,236,.24);
+}
+.mk.tel .vent{
+  border-radius:calc(var(--k) * 24);
+  border:calc(var(--k) * 5) solid #0C0B0A;
+}
+/* la plancha: lo impreso y los diagramas no viven dentro de un
+   dispositivo, así que van sin marco y con la sombra más corta */
+.mk.pap .vent{border-radius:0;box-shadow:0 calc(var(--k) * 12) calc(var(--k) * 28) rgba(0,0,0,.5)}
+.mk.pap .vent i{height:var(--alto);width:calc(var(--alto) * var(--r,0.75));border-radius:0}
+.v-sin{border:1px solid rgba(251,241,236,.3);padding:calc(var(--k) * 40);font-size:15px;color:rgba(251,241,236,.72)}
+.v-pie-foto{margin-top:calc(var(--k) * 14);font-size:15px;color:rgba(251,241,236,.6)}
+.v-dec{margin-top:calc(var(--k) * 46)}
+.v-dec p{margin:0;font-size:calc(var(--k) * 21);line-height:calc(var(--k) * 27);letter-spacing:-0.012em;color:rgba(251,241,236,.82);max-width:calc(var(--k) * 860);text-wrap:pretty}
+.v-dec p + p{margin-top:calc(var(--k) * 13)}
+.v-vivo{margin-top:calc(var(--k) * 32);font-size:15px}
+.v-vivo a{color:var(--hueso)}
+.v-pie{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:calc(var(--k) * 84)}
+.v-pie .sig{font-size:calc(var(--k) * 56);line-height:calc(var(--k) * 60);letter-spacing:-0.03em;text-align:left}
+.v-pie .x2{font-size:calc(var(--k) * 22);color:rgba(251,241,236,.72);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+body.trabado{overflow:hidden}
+
+/* ---------- móvil: todo vuelve al flujo ---------- */
+/* =====================================================================
+   VERTICAL Y MÓVIL
+   Por debajo de 900 todo vuelve al flujo. Las dos retículas comparten
+   estructura y solo cambian las variables: márgenes y escala de cuerpo.
+   Nada se escala con --k aquí abajo, que era lo que dejaba los párrafos
+   en 8 px.
+   ===================================================================== */
+@media (max-width:1180px){
+  .hoja{height:auto;padding:var(--arr) var(--mx) var(--aba)}
+  .hoja > *{position:relative;z-index:1;left:auto;right:auto;top:auto;width:auto;white-space:normal}
+  .masa-marco{position:absolute;left:4%;width:92%;top:0;bottom:0;z-index:0}
+
+  /* --- vertical (tableta) --- */
+  :root{--mx:48px;--arr:40px;--aba:72px}
+  .firma{font-size:15px;line-height:19px}
+  .oficio{display:block;font-size:13px;line-height:17px;margin-top:1px}
+  /* el menú sube a la derecha, en línea con la firma, igual que en escritorio */
+  .nav{display:none}
+  .hoja > .hamb{
+    display:block;position:absolute;right:var(--mx);top:calc(var(--arr) + 11px);z-index:6;
+    width:22px;height:15px;padding:0;border:0;background:none;cursor:pointer;
+  }
+  .hamb span{display:block;height:1.5px;background:var(--hueso)}
+  .hamb span + span{margin-top:5.25px}
+  /* el retrato sube a la esquina derecha, a la altura de la firma, y la
+     columna de la izquierda corre a su lado: así no queda el hueco */
+  .retrato{position:absolute;right:var(--mx);top:110px;width:180px;height:232px;margin-top:0;filter:grayscale(1);z-index:1}
+  .rot{font-size:14px;line-height:18px}
+  .r1{margin-top:28px}
+  .q1{margin-top:12px}
+  .dice{font-size:30px;line-height:35px;max-width:520px}
+  .marca-a{margin-top:62px}
+  .gigante{font-size:64px;line-height:68px;letter-spacing:-0.04em}
+  .r2{margin-top:44px}
+  .parrafo{font-size:16px;line-height:22px;max-width:34em}
+  .parrafo + .parrafo{margin-top:22px}
+  .q1,.q2{margin-top:10px}
+  .o1,.o2,.o3{display:inline-block;margin-top:56px}
+  .o2{margin-left:10px}
+  .o3{float:right}
+  .lista{margin-top:18px;clear:both}
+  .pieza{font-size:56px;line-height:76px;letter-spacing:-0.03em}
+  /* en pantalla estrecha no cabe una ficha al lado: se queda sólo el pie,
+     en una línea fija sobre la lista, y la miniatura se ve al abrir */
+  .ficha{
+    position:relative;right:auto;top:auto !important;transform:none;
+    align-items:flex-start;gap:0;margin:14px 0 0;min-height:19px;z-index:2;
+  }
+  .pie{gap:12px;font-size:13px;line-height:19px}
+  .pieza.viva .n{transform:none}
+  .lista.abierta .pieza{color:rgba(251,241,236,.34)}
+  .dato{display:none}
+  .cierre{margin-top:52px;font-size:56px;line-height:62px;letter-spacing:-0.04em}
+  .correo{margin-top:14px;font-size:20px;line-height:26px}
+  .leg{font-size:13px;line-height:17px}
+  .leg-a{margin-top:40px}
+  .leg-b{margin-top:6px}
+  .pie-texto{margin-top:26px}
+  .cierre2{margin-top:72px;font-size:56px;line-height:62px;letter-spacing:-0.04em}
+  .e1,.e2{display:inline-block;margin-top:34px}
+  .e2{margin-left:10px}
+  .tabla{margin-top:16px;clear:both}
+  .tabla{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr 1fr;column-gap:48px}
+  .fila{gap:18px;padding:15px 0}
+  .hoja > .banda{
+    position:absolute;left:0;right:0;width:100%;transform:none;bottom:0;top:auto;
+    height:var(--altoBanda,0px);
+  }
+  .f-n{font-size:18px;line-height:23px}
+  .f-a{font-size:14px;line-height:19px}
+
+  /* --- la ventana del proyecto --- */
+  .v-barra,.v-caja{padding-left:var(--mx);padding-right:var(--mx)}
+  .v-caja h1{font-size:33px;line-height:35px}
+  .v-pro{font-size:21px;line-height:27px;max-width:none}
+  .v-dec p{font-size:16px;line-height:22px;max-width:none}
+  .v-ficha{flex-direction:column;gap:5px}
+  .v-obra{gap:8px}
+  .mk{height:430px;padding:30px 34px;--alto:370px}
+  .v-pie{flex-direction:column;align-items:flex-start;gap:16px}
+  .v-pie .sig{font-size:34px;line-height:38px}
+}
+
+/* --- móvil ---
+   Escala propia, más pequeña y con más interlineado que la de vertical:
+   en una pantalla de mano el cuerpo grande no impone, satura. Los saltos
+   entre bloques suben para que el aire lo dé el blanco y no el tamaño.
+   Suelo de legibilidad: 11 px en texto corrido, 10 px solo en el rótulo
+   versalita de la tabla, que lleva tracking abierto.
+   --------------------------------------------------------------- */
+@media (max-width:560px){
+  /* Clavado al frame «Móvil · 390 — v4»: cada margen es la diferencia
+     entre la coordenada del Figma y el final del bloque anterior */
+  :root{--mx:22px;--arr:17px;--aba:32px}
+  .hoja > .hamb{top:calc(var(--arr) + 8px);width:22px;height:16px}
+  .hamb span{height:2px}
+  .hamb span + span{margin-top:5px}
+  .firma{font-size:14px;line-height:18px}
+  .oficio{font-size:11px;line-height:15px;margin-top:-3px}
+  .nav{top:var(--arr);gap:14px;font-size:12px;line-height:16px}
+  .retrato{top:72px;width:84px;height:109px}
+  .rot{font-size:12px;line-height:16px}
+  .r1{margin-top:126px}
+  .q1{margin-top:11px}
+  .dice{font-size:18px;line-height:20px;letter-spacing:-0.023em;max-width:none}
+  /* XMP® y /Producto digital comparten línea: el segundo sube una
+     interlínea y se alinea al margen derecho, como en el Figma */
+  .marca-a{margin-top:32px}
+  .marca-b{margin-top:-36px;margin-left:0;text-align:right;white-space:nowrap}
+  .gigante{font-size:clamp(25px,8.3vw,32px);line-height:36px;letter-spacing:-0.03em}
+  .r2{margin-top:47px}
+  .parrafo{font-size:14px;line-height:18px}
+  .parrafo + .parrafo{margin-top:18px}
+  .q2{margin-top:10px}
+  .o1,.o2,.o3{margin-top:95px}
+  .ficha{margin-top:8px;min-height:16px}
+  .lista{margin-top:0}
+  .pieza{font-size:26px;line-height:44px;letter-spacing:-0.02em}
+  .pie{gap:10px;font-size:11px;line-height:16px}
+  .cierre{margin-top:95px;font-size:32px;line-height:36px;letter-spacing:-0.04em}
+  .correo{margin-top:0;font-size:15px;line-height:21px}
+  .leg{font-size:11px;line-height:15px}
+  .leg-a{margin-top:10px}
+  .leg-b{margin-top:5px}
+  .pie-texto{margin-top:17px}
+  .cierre2{margin-top:89px;font-size:32px;line-height:36px;letter-spacing:-0.04em}
+  .e1,.e2{margin-top:34px}
+  .tabla{margin-top:16px;grid-template-columns:1fr;column-gap:0}
+  .fila{gap:14px;padding:14px 0 12px}
+  .f-n{font-size:14px;line-height:19px}
+  .f-a{font-size:12px;line-height:19px}
+  .v-caja h1{font-size:24px;line-height:26px}
+  .v-pro{font-size:18px;line-height:24px}
+  .v-dec p{font-size:15px;line-height:20px}
+  .mk{height:300px;padding:22px 24px;--alto:256px}
+  .v-pie .sig{font-size:26px;line-height:30px}
+}
+/* Con «Reducir movimiento» se apaga todo menos la masa XMP: deriva a
+   31 px/s en una sola dirección, sin parálisis ni rebote, así que no es
+   del tipo de movimiento que marea. Sin ella el site parece roto. */
+
+/* ---------------------------------------------------------------
+   MENÚ EN ESTRECHO. Tres enlaces caben en una línea a 390 px, pero
+   se amontonan con la firma, el oficio y el retrato en los primeros
+   190 px de alto. El panel va en negro, como todo lo que se despliega
+   en este site, y cada entrada dice adónde lleva.
+   --------------------------------------------------------------- */
+.hamb{display:none}
+.menu[hidden]{display:none}
+.menu{
+  position:fixed;inset:0;z-index:500;background:var(--negro);color:var(--hueso);
+  display:flex;flex-direction:column;
+  padding:34px max(22px,env(safe-area-inset-right,0px)) max(30px,env(safe-area-inset-bottom,0px)) max(22px,env(safe-area-inset-left,0px));
+  padding-top:max(34px,env(safe-area-inset-top,0px));
+  animation:menuEntra 320ms cubic-bezier(.16,.86,.24,1) both;
+}
+@keyframes menuEntra{from{opacity:0}to{opacity:1}}
+.menu a{color:inherit;text-decoration:none}
+.menu-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.m-firma{margin:0;font-size:14px;line-height:18px;font-weight:600}
+.m-oficio{margin:1px 0 0;font-size:11px;line-height:15px;color:rgba(251,241,236,.72)}
+.menu-x{
+  appearance:none;border:0;background:none;color:var(--hueso);font:inherit;
+  font-size:13px;line-height:18px;padding:0;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px;
+}
+.menu-nav{margin:auto 0;border-bottom:1px solid rgba(251,241,236,.22)}
+.menu-nav a{display:block;border-top:1px solid rgba(251,241,236,.22);padding:26px 0 22px;color:var(--hueso)}
+.menu-nav b{display:block;font-size:32px;line-height:36px;font-weight:500;letter-spacing:-0.03em}
+.menu-nav em{display:block;margin-top:9px;font-style:normal;font-size:12px;line-height:16px;color:rgba(251,241,236,.52)}
+.menu-pie .m-correo{margin:0;font-size:15px;line-height:21px}
+.menu-pie .m-leg{margin:6px 0 0;font-size:11px;line-height:15px;color:rgba(251,241,236,.72)}
+.menu-pie .m-leg a{text-decoration:underline;text-underline-offset:3px}
+.menu-nav a:focus-visible,.menu-pie a:focus-visible{outline:2px solid var(--hueso);outline-offset:4px}
+/* el destino de un ancla no debe quedar pegado al borde al saltar */
+#quien-soy,#trabajo,#contacto{scroll-margin-top:28px}
+
+/* ---------------------------------------------------------------
+   Entre 561 y 779 px la cabecera de escritorio no cabe: el retrato
+   sigue a la derecha pero el titular ya ocupa todo el ancho y se le
+   metía debajo. En esa franja mandan las reglas del móvil — retrato
+   menor arriba y el titular arrancando por debajo de él.
+   --------------------------------------------------------------- */
+@media (min-width:561px) and (max-width:779px){
+  .retrato{top:86px;width:130px;height:168px}
+  .q1{margin-top:150px}
+}
+
+/* ---------------------------------------------------------------
+   En estrecho las iniciales van una sola vez: con las tres copias del
+   bucle la X reaparecía al final de la página. Una sola copia no puede
+   derivar en bucle sin dejar hueco, así que aquí respira — va y vuelve
+   dentro de su marco. El recorrido es menor que el sobrante por arriba,
+   de modo que nunca se despega del borde superior ni enseña costura.
+   --------------------------------------------------------------- */
+@keyframes respira{from{transform:translate3d(0,-12%,0)}to{transform:translate3d(0,0,0)}}
+@media (max-width:1180px){
+  .marca{animation:respira 30s cubic-bezier(.45,0,.55,1) infinite alternate}
+  .marca svg:nth-of-type(n+2){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:1ms!important}
+  .marca{animation:deriva 110s linear infinite !important}
+}
+@media (prefers-reduced-motion:reduce) and (max-width:1180px){
+  .marca{animation:respira 30s cubic-bezier(.45,0,.55,1) infinite alternate !important}
+}
+
+/* el margen lateral respeta la barra del sistema en los móviles con muesca */
+@media (max-width:1180px){
+  .hoja{padding-left:max(var(--mx),env(safe-area-inset-left,0px));padding-right:max(var(--mx),env(safe-area-inset-right,0px))}
+}
+[hidden]{display:none !important}
+</style>
+
+<div class="hoja">
+  <p class="firma">Xabier Mauleón</p>
+  <p class="oficio">Digital Product Design Lead</p>
+  <nav class="nav" aria-label="Main">
+    <a href="#trabajo">Work</a>
+    <a href="#quien-soy">About</a>
+    <a href="#contacto">Contact</a>
+    <a class="idioma" href="https://xabimauleon.netlify.app/" hreflang="es" lang="es">Español</a>
+  </nav>
+  <button class="hamb" id="hamb" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open the menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="masa-marco" aria-hidden="true"><div class="marca">
+    <svg viewBox="0 0 1050 3400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.000201446 590.748L1050 -91.7519L1050 151.248L0.000190824 833.748L0.000201446 590.748ZM0.000231082 -87.252L586.5 277.248L424.5 398.748L0.000220657 151.248L0.000231082 -87.252ZM468 460.248L630 340.248L1050 586.248L1050 824.748L468 460.248ZM0.000184047 988.787L1050 988.787L1050 1240.79L171 1605.29L159 1516.79L1050 1879.79L1050 2130.29L0.00013415 2130.29L0.00014333 1920.29L888 1920.29L835.5 1990.79L0.000155394 1644.29L0.000162737 1476.29L835.5 1128.29L888 1198.79L0.000174867 1198.79L0.000184047 988.787ZM0.000124898 2341.95L1050 2341.95L1050 2742.45C1050 2827.45 1035.5 2897.45 1006.5 2952.45C978.5 3008.45 939.5 3049.95 889.5 3076.95C840.5 3104.95 785 3118.95 723 3118.95C666 3118.95 612.5 3105.45 562.5 3078.45C513.5 3052.45 473.5 3011.45 442.5 2955.45C412.5 2900.45 397.5 2829.45 397.5 2742.45L397.5 2551.95L0.000115719 2551.95L0.000124898 2341.95ZM567 2551.95L567 2728.95C567 2790.95 581 2835.95 609 2863.95C637 2891.95 675 2905.95 723 2905.95C772 2905.95 810 2891.95 837 2863.95C865 2835.95 879 2790.95 879 2728.95L879 2551.95L567 2551.95Z" fill="#0C0B0A"/>
+    </svg>
+    <svg viewBox="0 0 1050 3400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.000201446 590.748L1050 -91.7519L1050 151.248L0.000190824 833.748L0.000201446 590.748ZM0.000231082 -87.252L586.5 277.248L424.5 398.748L0.000220657 151.248L0.000231082 -87.252ZM468 460.248L630 340.248L1050 586.248L1050 824.748L468 460.248ZM0.000184047 988.787L1050 988.787L1050 1240.79L171 1605.29L159 1516.79L1050 1879.79L1050 2130.29L0.00013415 2130.29L0.00014333 1920.29L888 1920.29L835.5 1990.79L0.000155394 1644.29L0.000162737 1476.29L835.5 1128.29L888 1198.79L0.000174867 1198.79L0.000184047 988.787ZM0.000124898 2341.95L1050 2341.95L1050 2742.45C1050 2827.45 1035.5 2897.45 1006.5 2952.45C978.5 3008.45 939.5 3049.95 889.5 3076.95C840.5 3104.95 785 3118.95 723 3118.95C666 3118.95 612.5 3105.45 562.5 3078.45C513.5 3052.45 473.5 3011.45 442.5 2955.45C412.5 2900.45 397.5 2829.45 397.5 2742.45L397.5 2551.95L0.000115719 2551.95L0.000124898 2341.95ZM567 2551.95L567 2728.95C567 2790.95 581 2835.95 609 2863.95C637 2891.95 675 2905.95 723 2905.95C772 2905.95 810 2891.95 837 2863.95C865 2835.95 879 2790.95 879 2728.95L879 2551.95L567 2551.95Z" fill="#0C0B0A"/>
+    </svg>
+    <svg viewBox="0 0 1050 3400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.000201446 590.748L1050 -91.7519L1050 151.248L0.000190824 833.748L0.000201446 590.748ZM0.000231082 -87.252L586.5 277.248L424.5 398.748L0.000220657 151.248L0.000231082 -87.252ZM468 460.248L630 340.248L1050 586.248L1050 824.748L468 460.248ZM0.000184047 988.787L1050 988.787L1050 1240.79L171 1605.29L159 1516.79L1050 1879.79L1050 2130.29L0.00013415 2130.29L0.00014333 1920.29L888 1920.29L835.5 1990.79L0.000155394 1644.29L0.000162737 1476.29L835.5 1128.29L888 1198.79L0.000174867 1198.79L0.000184047 988.787ZM0.000124898 2341.95L1050 2341.95L1050 2742.45C1050 2827.45 1035.5 2897.45 1006.5 2952.45C978.5 3008.45 939.5 3049.95 889.5 3076.95C840.5 3104.95 785 3118.95 723 3118.95C666 3118.95 612.5 3105.45 562.5 3078.45C513.5 3052.45 473.5 3011.45 442.5 2955.45C412.5 2900.45 397.5 2829.45 397.5 2742.45L397.5 2551.95L0.000115719 2551.95L0.000124898 2341.95ZM567 2551.95L567 2728.95C567 2790.95 581 2835.95 609 2863.95C637 2891.95 675 2905.95 723 2905.95C772 2905.95 810 2891.95 837 2863.95C865 2835.95 879 2790.95 879 2728.95L879 2551.95L567 2551.95Z" fill="#0C0B0A"/>
+    </svg>
+  </div></div>
+  <div class="retrato" role="img" aria-label="Portrait of Xabier Mauleón"></div>
+
+  <p class="rot r1" id="quien-soy">(1) Who I am</p>
+  <div class="q1"><p class="dice">I make digital product. I audit UX/UI and accessibility. I improve processes. I understand problems.</p></div>
+
+  <p class="gigante marca-a">XMP®</p>
+  <p class="gigante marca-b">/Digital product</p>
+
+  <p class="rot r2">(2) What I do</p>
+  <div class="q2"><p class="parrafo">My work sits where brand judgement meets product thinking. I know visual systems, I know the business side, and I know the people who end up using what I design.</p><p class="parrafo">I work with AI natively, with Claude as a regular part of the process. Not as a trend, but as a real part of how I think and how I produce. I am paying close attention to what is happening right now and where it is all heading.</p></div>
+
+  <p class="rot o1" id="trabajo" style="color:var(--hueso)">Work</p>
+  <p class="rot o2" id="cuenta-o">(6)</p>
+  <p class="rot o3" id="pista">Select any project</p>
+
+  <p class="ficha pie" id="ficha" aria-hidden="true"><span class="num" id="d-num"></span><span id="d-cli"></span><span id="d-anio"></span></p>
+  <ul class="lista" id="lista"></ul>
+
+  <p class="cierre" id="contacto">Let’s talk.</p>
+  <p class="correo"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
+  <p class="leg leg-a">© 2026 Xabier Mauleón</p>
+  <p class="leg leg-b"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+  <div class="pie-texto"><p class="parrafo">I have designed for Vogue, GQ, Vanity Fair, S Moda and Glamour. I have led creative teams, directed campaigns for international clients and built digital product platforms from nothing. At Condé Nast I developed the digital subscription system on Shopify Plus for five titles across Spain, the Middle East and India — with direct impact on conversion and revenue.</p></div>
+
+  <div class="banda" aria-hidden="true"></div>
+  <p class="cierre2">More experience</p>
+  <p class="rot e1">Career</p>
+  <p class="rot e2" id="cuenta-e">(6)</p>
+  <ul class="tabla" id="tabla"></ul>
+<div class="menu" id="menu" hidden>
+  <div class="menu-top">
+    <div>
+      <p class="m-firma">Xabier Mauleón</p>
+      <p class="m-oficio">Digital Product Design Lead</p>
+    </div>
+    <button class="menu-x" id="menu-x" type="button">Close</button>
+  </div>
+  <nav class="menu-nav" aria-label="Main">
+    <a href="#quien-soy"><b>About</b><em>Who I am and how I work</em></a>
+    <a href="#trabajo"><b>Work</b><em>Six projects</em></a>
+    <a href="#contacto"><b>Contact</b><em>Let’s talk.</em></a>
+  </nav>
+  <div class="menu-pie">
+    <p class="m-correo"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
+    <p class="m-leg"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV (PDF)</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/" hreflang="es" lang="es">Español</a></p>
+  </div>
+</div>
+
+</div>
+
+<div class="ventana" id="ventana" role="dialog" aria-modal="true" aria-labelledby="v-tit">
+  <div class="v-dentro">
+    <div class="v-barra">
+      <span id="v-pos">(01/06)</span>
+      <nav>
+        <button type="button" id="v-ant">Previous</button>
+        <button type="button" id="v-sig">Next</button>
+        <button type="button" id="v-x" class="x">Close</button>
+      </nav>
+    </div>
+    <div class="v-caja">
+      <h1 id="v-tit"></h1>
+      <div class="v-ficha"><span id="v-cli"></span><span id="v-dis"></span></div>
+      <p class="v-pro" id="v-pro"></p>
+      <div class="v-obra" id="v-obra"></div>
+      <div class="v-puntos" id="v-puntos" role="tablist" aria-label="Project pieces"></div>
+      <div class="v-dec" id="v-dec"></div>
+      <div class="v-vivo" id="v-vivo"></div>
+      <div class="v-pie">
+        <button type="button" class="sig" id="v-next"></button>
+        <button type="button" class="x2" id="v-x2">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* los seis primeros van en la lista grande; el resto, en el índice */
+var PRINCIPALES = 6;
+var OBRA = [
+  { id:'ibmot', n:'IBMot Experience', cli:'Own project', dis:'Product · SaaS', anio:'2026',
+    pro:'I built IBMot end to end, from defining the product to the last screen: a platform for renting and selling premium motorcycles, with its own management panel behind it. The client logs in and edits pages, menus and social links, reads the enquiries coming in, manages the routes and sees where the traffic comes from. It also carries a financial control tool I wrote from scratch, because the business needed to close the month inside the same place where it sells.',
+    mk:[['../img/mk/ib-1.webp',0.46208530805687204],['../img/mk/ib-2.webp',0.46208530805687204],['../img/mk/ib-3.webp',0.46208530805687204]],
+    dec:['A full design system in Figma — Bebas Neue and DM Sans, not one rounded corner — before drawing a single screen.',
+         'Phone first: a motorcycle gets looked at from the phone, not from a desk.',
+         'The catalogue is a page of its own per model rather than a filtered list, because each bike has to be able to rank on its own.',
+         'Navigation follows what the business actually does — rent, sell, ride — and not the shape of the org chart.'],
+    vivo:[['ibmotexperience.com','https://ibmotexperience.com/es']] },
+
+  { id:'corrupcion', n:'Data visualisation', cli:'Own project', dis:'Corruption in Spanish democracy', anio:'2026',
+    pro:'Forty-four years of political corruption in Spain told in a single chart. I started from the Carte Figurative that Minard drew in 1869 about the Russian campaign and used it as the structure: a ribbon that narrows as it advances. I gathered the documented cases between 1982 and 2026, restated every figure in 2026 euros so they could be compared — it comes to 8,697 million — and added a map by region and a panel of macroeconomic balance.',
+    mk:[['../img/mk/co-1.webp',0.46208530805687204],['../img/mk/co-2.webp',0.46208530805687204],['../img/mk/co-3.webp',0.46208530805687204]],
+    dec:['If a figure cannot be understood inside the chart itself, it stays out. Reading wins over volume of information.',
+         'Every amount is restated in 2026 euros. Without that, comparing 1992 with 2024 means nothing at all.',
+         'The map was built from real geographic data and not from an illustration: the borders had to be the borders.',
+         'Aged paper, Playfair Display and Courier Prime. This is a historical document, not an analytics dashboard.'],
+    vivo:[['corrupcion-espana.netlify.app','https://corrupcion-espana.netlify.app/grafico/']] },
+
+  { id:'suscripciones', n:'Stores', cli:'Condé Nast', dis:'Commerce · Shopify Plus', anio:'2021–2024',
+    pro:'I led the design of Condé Nast’s digital subscription system on Shopify Plus: five titles — Vogue, GQ, Vanity Fair, AD and Traveler — across Spain, the Middle East and India. We started from an inherited store that could not be migrated and a seven-step checkout. We rebuilt the whole thing, and the impact was measured in conversion and in revenue.',
+    mk:[['../img/mk/su-1.webp',0.46208530805687204],['../img/mk/su-2.webp',0.46208530805687204],['../img/mk/su-3.webp',0.46208530805687204]],
+    dec:['A new database from scratch instead of dragging the old one along: migrating it cost more than starting over.',
+         'Checkout went from seven steps to two.',
+         'A modular architecture on Shopify Plus: five titles on one base, none of them looking like the one next door.',
+         'Phone first, because that is where people actually subscribe.'],
+    vivo:[['Vogue','https://suscripcion.vogue.es/'],['GQ','https://suscripcion.revistagq.com/'],['Vanity Fair','https://suscripcion.revistavanityfair.es/']] },
+
+  { id:'jorge-juan', n:'Hotel Jorge Juan', cli:'Vanity Fair', dis:'Editorial product', anio:'2022',
+    pro:'Vanity Fair had a sponsored podcast with eleven seasons and nowhere of its own to live. I directed the project and took on the design system, the UX and the UI: a brand that stands up by itself but is still recognisably Vanity Fair, and a navigation able to hold eleven seasons without turning into a dead archive.',
+    mk:[['../img/mk/jj-1.webp',1.6008771929824561],['../img/mk/jj-2.webp',1.6008771929824561],['../img/mk/jj-3.webp',1.6008771929824561]],
+    dec:['Its own brand under the magazine’s umbrella: different type and palette, same editorial masthead.',
+         'The season leads, not the episode. Anyone arriving for one guest finds them; anyone arriving cold starts at the beginning.'],
+    vivo:[] },
+
+  { id:'floreig', n:'Floreig Festival', cli:'Floreig Food Fest · Mallorca', dis:'Brand and digital product', anio:'2026',
+    pro:'Floreig is a food and music festival in Mallorca that moves to a different site every year. I did the whole brand and the website, and underneath it I built a custom panel so the team can edit text and images without calling me. It runs in Spanish and English, the contact form writes to a database with an export to Excel, and two or three people go in to run it.',
+    mk:[['../img/mk/fl-1.webp',0.46208530805687204],['../img/mk/fl-2.webp',0.46208530805687204],['../img/mk/fl-3.webp',0.46208530805687204]],
+    dec:['A bespoke application with its own panel instead of a closed platform: the client does not pay a monthly fee to edit their own words.',
+         'The identity lives in the type and palette system, not in the place, because the venue changes every year.',
+         'Two languages from day one, not bolted on afterwards.',
+         'I built all of it, hosting and server setup included.'],
+    vivo:[] },
+
+  { id:'physiogo', n:'PhysioGo audit', cli:'PhysioGo', dis:'UX, UI and accessibility audit', anio:'2026',
+    pro:'PhysioGo is a physiotherapy, pain prevention and rehabilitation app that was in beta. I reviewed the whole application against the usability heuristics and WCAG level AA, measuring contrast and target sizes on the running app rather than on screenshots. The work was reviewed with the team in parts, instead of landing all at once at the end.',
+    mk:[['../img/mk/ph-1.webp',1.6008771929824561],['../img/mk/ph-2.webp',1.6008771929824561],['../img/mk/ph-3.webp',1.6008771929824561]],
+    dec:['The report is not a PDF that gets filed: it is a map of screens the team filters by UX, UI or accessibility and ticks off as it goes.',
+         'Every finding carries the screen, the specific rule it breaks and the fix. Without that, an audit is a list of complaints.',
+         'The onboarding path drops from fourteen screens to nine steps.'],
+    vivo:[['the map of screens','https://claude.ai/artifact/Wsvf3Ucqfm1KvnzfiFq5UK']] },
+
+  { id:'s-moda', n:'S Moda — El País', cli:'El País', dis:'Editorial', anio:'2011–2016',
+    pro:'Five years as Head of Design at El País’s fashion weekly, under the direction of Diego Areso: art direction and layout at a weekly rhythm, image treatment on our own shoots, and leading the move into digital.',
+    mk:[['../img/mk/sm-p1.webp',0.738],['../img/mk/sm-p2.webp',0.738],['../img/mk/sm-p3.webp',0.738],['../img/mk/sm-p4.webp',0.738],['../img/mk/sm-1.webp',1.6]],
+    dec:['The magazine’s design system first and the issues after. The system is what protects the identity when there is a deadline every week.',
+         'Covers and features were treated as authored work and not as a template: Lily Cole, Inés Sastre, Amélie Nothomb.',
+         'I led the website from inside. Carrying a graphic language from paper to screen is not a job you hand over.',
+         'More than two hundred issues signed.'],
+    vivo:[['elpais.com/smoda','https://elpais.com/smoda/']] },
+
+  { id:'letras', n:'Johnnie Walker — Letras District', cli:'Condé Nast Traveler · Johnnie Walker', dis:'Branded content', anio:'2021',
+    pro:'An illustrated isometric map of Madrid’s Barrio de las Letras with more than fifty points, each one carrying its own editorial entry. Art direction and design of the piece, including directing the illustration, which Bakea drew.',
+    mk:[['../img/mk/jw-1.webp',1.4058679706601467],['../img/mk/jw-2.webp',1.4056224899598393]],
+    dec:['An illustrated map instead of a list or a cartographic one: the neighbourhood had to be appealing before it was informative.',
+         'Three levels of reading — district, area and entry — to order fifty places without ending up as a directory.',
+         'The sponsored programme comes in as a guide recommendation. The risk in the brief was that it would read as advertising in disguise.'],
+    vivo:[] },
+
+  { id:'cn-college', n:'UX/UI — Condé Nast College', cli:'Condé Nast College', dis:'Digital product', anio:'2023',
+    pro:'Redesign of the courses and master’s section of Condé Nast’s school in Spain and Latin America. UX/UI direction: the section, the content tree and the comparison system, through to developer handover.',
+    mk:[['../img/mk/cnc-m1.webp',0.46208530805687204],['../img/mk/cnc-m2.webp',0.46208530805687204],['../img/mk/cnc-m3.webp',0.46208530805687204]],
+    dec:['Four kinds of programme — master’s, expert, diplomas and short courses — with different logics, lengths and prices, split into tabs and filters.',
+         'Modular cards with the same hierarchy throughout, so they can be compared on a phone.',
+         'The house’s editorial codes stay: serif, black and white, and the institutional red as the only accent.'],
+    vivo:[] },
+
+  { id:'vfni', n:'VFNI — Vogue Fashion Night In', cli:'Vogue · Condé Nast', dis:'Digital event', anio:'2021',
+    pro:'The pandemic left Vogue Fashion Night Out without a street. UX/UI direction and design of the first fully digital edition, from defining the format through to developer handover.',
+    mk:[['../img/mk/vf-1.webp',1.4058679706601467],['../img/mk/vf-2.webp',1.4058679706601467],['../img/mk/vf-3.webp',1.4058679706601467]],
+    dec:['A retro video-game look — pixel type, teal and magenta — deliberately far from Vogue’s usual line.',
+         'More than eight interactive sections: customisable avatars, virtual showroom, gaming room, talking room and a product pack.',
+         'The game was built in Celtra, and the live show on 24 September brought together four artists.'],
+    vivo:[] },
+
+  { id:'comunidades', n:'Vogue Voices & GQ Community', cli:'Condé Nast', dis:'Digital product', anio:'2020',
+    pro:'Two community microsites with the same mechanic — sign-up, exclusive content and event access — for two audiences with nothing in common. UX/UI direction and design of both.',
+    mk:[['../img/mk/vv-1.webp',0.46210720887245843],['../img/mk/vv-2.webp',0.46210720887245843]],
+    dec:['One shared modular architecture and two independent visual identities: the same machine underneath, two tones on top.',
+         'A concept of its own per community: listening to the reader in Vogue Voices, contemporary male identity in GQ Community.',
+         'Simplified sign-up and a narrative scroll built for the phone first in both.',
+         'The system scales to new themes and editions, and live events come in through the same flow.'],
+    vivo:[] },
+
+  { id:'vb-santander', n:'Vogue Business × Santander', cli:'Condé Nast · Banco Santander', dis:'Editorial art direction', anio:'2020',
+    pro:'An editorial and digital product born from the agreement between Condé Nast and Banco Santander on female leadership: four issues that came out in print and in digital. Art direction and design.',
+    mk:[['../img/mk/vb-3.webp',0.776],['../img/mk/vb-1.webp',0.776],['../img/mk/vb-2.webp',0.777]],
+    dec:['Each issue with a different cover approach — photography or illustration — over the same typographic codes and the same masthead.',
+         'Every instalment is built around real figures: Elena Ochoa Foster, Helen Mirren, leaders from film and technology.',
+         'The brief asked for the agreement to read as an editorial project and not as a corporate brochure.'],
+    vivo:[] },
+
+  { id:'workflow', n:'Advertising department workflow', cli:'Condé Nast España', dis:'Service design', anio:'2017',
+    pro:'Condé Nast’s advertising department moved six titles, three national markets and three international ones, with two selling routes that worked differently and that nobody had ever drawn in the same place. I mapped the whole service: the negotiation with client and agency, the print structure by title and market, and the digital department with its case study.',
+    mk:[['../img/mk/wf-1.webp',0.852],['../img/mk/wf-2.webp',1.595],['../img/mk/wf-3.webp',1.241]],
+    dec:['Two routes in parallel rather than one: the annual negotiation, closed as a percentage of spend, and the specific campaign, which can be print only, digital only or both. Mixing them was what jammed the meetings.',
+         'Each cycle carries its own progress bar — 40, 60, 80, 100 per cent — because the question everyone asked was not what comes next, but how much is left.',
+         'The adjustment loops are drawn as what they are: they fold back on themselves until the yes. A diagram that hides them lies about how long closing really takes.',
+         'The print side is ordered by title and market; the digital side by sales director and account manager. They are two different logics, and forcing them into one template would have looked cleaner and been less true.'],
+    vivo:[] },
+
+  { id:'rich-media', n:'Rich Media — CNX', cli:'Condé Nast España · CNX', dis:'Advertising formats', anio:'2020',
+    pro:'I set up the Rich Media department at CNX, Condé Nast Spain’s in-house agency. These are formats you do not buy ready-made from a display network: they are designed and coded one by one on top of the real page of the title hosting them. Three of them here — a Dior skin over Vanity Fair, a Cartier product carousel inside an AD article, and a shoppable Massimo Dutti unit on Vogue mobile.',
+    mk:[['../img/mk/rm-1.webp',1.8038],['../img/mk/rm-2.webp',1.9465],['../img/mk/rm-3.webp',0.5616],['../img/mk/rm-4.webp',0.5616]],
+    dec:['The format is designed on the article, not on a blank canvas. A skin that gets in the way of reading works as a piece and fails as a medium: the real constraint is how much it can take before the reader leaves.',
+         'The phone unit has two states: video with a product carousel, and an expanded grid with prices and a way through to the collection. The jump between them is the format; without it, it is a banner with video in it.',
+         'Each unit inherits the codes of its title — Vanity Fair’s serif, AD’s white, Vogue’s rhythm — so the advert enters the page instead of landing on top of it.',
+         'The department did not exist before: the catalogue of formats had to be defined from nothing, format by format, with what each one cost to produce.'],
+    vivo:[] },
+
+  { id:'decir-las-cosas', n:'Decir las cosas', cli:'Vanity Fair · Gran Meliá Hotels & Resorts', dis:'Branded content', anio:'2024',
+    pro:'Microsite for Vanity Fair’s podcast with Gran Meliá, hosted by Jesús Terrés and Alberto Moreno. Art direction and design of the whole piece: the identity of the show, the cover, the episode list with its player, the links out to seven listening platforms and the navigation on desktop and phone.',
+    mk:[['../img/mk/dlc-1.webp',1.6],['../img/mk/dlc-2.webp',1.6],['../img/mk/dlc-3.webp',1.6],['../img/mk/dlc-4.webp',0.5622]],
+    dec:['The quotation marks are the entire system: they hold the title, separate the blocks, open each episode and come back in the menu. A podcast called Saying things out loud needed no other mark.',
+         'The sponsorship is declared at the very top, in the masthead — a Vanity Fair podcast for Gran Meliá — rather than slipping into the content as advertising.',
+         'The episode entry is the unit of the whole site: number, headline, player and links out. Everything else is the container that repeats it.',
+         'Flat red, cut-out photography on top and Vanity Fair’s serif untouched. The show needed a brand of its own without leaving the house.'],
+    vivo:[] },
+
+  { id:'conversaciones', n:'Conversaciones Traveler', cli:'Condé Nast Traveler', dis:'Digital event', anio:'2020',
+    pro:'Four days of live conversations about travel after lockdown — destinations, hotels, mobility and trends — with its site, its hour-by-hour schedule and the full kit of pieces: banners, native, newsletter, social and the backgrounds and name plates of the video calls themselves. Art direction and design.',
+    mk:[['../img/mk/ct-1.webp',1.6],['../img/mk/ct-2.webp',1.6],['../img/mk/ct-3.webp',1.6],['../img/mk/ct-4.webp',0.5625]],
+    dec:['The mark of the series is a speech bubble: the word split across four lines inside the bubble, and Traveler’s masthead inside a second bubble answering it.',
+         'Four days, four accents. Destinations, Hotels, Mobility and Trends share a grid and change hue, so the schedule reads at a glance and each day’s page is recognisable on its own.',
+         'The schedule is a grid of hours and not a list of talks: what people came to solve was what time to log in, not how many sessions there were.',
+         'The event went out on video, so the system reaches the video-call backgrounds and the speakers’ name plates too. Leaving that out means falling out of brand at exactly the moment you are being watched.'],
+    vivo:[] },
+
+  { id:'mercado-flores', n:'El Mercado de las Flores de Vogue', cli:'Vogue España', dis:'Event identity and print', anio:'2018–2021',
+    pro:'The Flower Market took over Calle Jorge Juan, between Serrano and Velázquez, with stalls running end to end. Art direction and design of the graphics for every edition: the 100×120 poster, the 80×120 plan with the stall layout, the programme and the autumn and Christmas editions.',
+    mk:[['../img/mk/mdf-1.webp',0.8333],['../img/mk/mdf-2.webp',0.6667],['../img/mk/mdf-3.webp',0.6667],['../img/mk/mdf-4.webp',0.6953]],
+    dec:['The poster is a wreath of real flowers photographed with the masthead inside it. At a flower market you do not illustrate the flower: you bring it in and shoot it.',
+         'The 80×120 plan is the useful piece of the whole set. At that size it has to be read standing up, two metres away and with people in front, so the street is drawn whole and vertical and the stalls are numbered.',
+         'Each edition keeps the grid and changes the still life — spring, autumn, Christmas. What identifies the market is the composition, not the particular flower.',
+         'The sponsors sit in a fixed footer, at the end and on a single line. There are many of them, and any other solution eats the poster.'],
+    vivo:[] },
+
+  { id:'mapas-traveler', n:'Maps not to get lost by', cli:'Condé Nast Traveler', dis:'Print editorial', anio:'2019',
+    pro:'A collection of fold-out maps for Condé Nast Traveler: one side is an illustrated map of the destination and the other is the written guide — routes, landmarks, food and wine, culture. Art direction and layout of the Flanders and Brussels, Costa Brava and Grand Tour of Switzerland issues.',
+    mk:[['../img/mk/gt-1.webp',1.4229],['../img/mk/gt-2.webp',1.4207],['../img/mk/gt-3.webp',0.7052],['../img/mk/gt-4.webp',1.4162],['../img/mk/gt-5.webp',0.722]],
+    dec:['A fold-out forces you to design two pieces in one: a map looked at fully open and a guide read panel by panel. Every fold is a cut in the reading, and you lay out knowing where it falls.',
+         'The map is illustrated, not cartographic. In Flanders the thread is Bruegel, so the territory is arranged around his paintings and not around the roads.',
+         'The written guide uses the same categories in every issue — routes, landmarks, food, culture — so the collection reads the same destination after destination.',
+         'One palette per destination: the Costa Brava teal, the Flemish yellow, the black of the Swiss route. Traveler’s masthead and the grid do not move.'],
+    vivo:[] },
+
+  { id:'loreal', n:'L’Oréal Paris — Tu belleza es tendencia', cli:'Condé Nast · L’Oréal Paris', dis:'Branded content', anio:'2019',
+    pro:'A branded content supplement for L’Oréal Paris produced by Condé Nast: cover, contents and a series of spreads by product — Rouge Signature, Cat Eye — plus the backstage of Paris Fashion Week. Art direction and layout.',
+    mk:[['../img/mk/lo-1.webp',0.7544],['../img/mk/lo-2.webp',1.5088],['../img/mk/lo-3.webp',1.5088],['../img/mk/lo-4.webp',1.5088],['../img/mk/lo-5.webp',1.5088]],
+    dec:['A large handwritten initial opens each spread and anchors the composition. It is the only thing that repeats page after page: the grid is recomposed around each product.',
+         'The product is cut out on white and treated as a still life, not as an advertising shot. That is what lets the spread read as a feature rather than an advert.',
+         'The palette comes out of the product itself — the red of the lipstick, the nude of the concealer — and not out of the brand manual.',
+         'The brief was advertising and it had to read as a magazine. The cover carries no claim and no price: it carries a photograph and a headline.'],
+    vivo:[] },
+
+  { id:'filmin', n:'Vogue × Filmin', cli:'Vogue España · Filmin', dis:'Digital campaign', anio:'2022',
+    pro:'A Vogue España promotion with Filmin: three months of subscription with the May issue. Design of the redemption page with its form, the social piece and the advert in the magazine itself that led to the code.',
+    mk:[['../img/mk/fi-1.webp',1.152],['../img/mk/fi-2.webp',1.0629],['../img/mk/fi-3.webp',0.744]],
+    dec:['Vogue’s masthead stays in its serif and Filmin’s green enters only in the word FILMIN. Two brands in one headline and a single typographic voice.',
+         'The page is a short form and a button. When what you are asking for is a code redemption, every extra block is a drop-off.',
+         'The print advert closes the loop with a QR and the line about where to get it. The campaign lives on two supports and the jump between them is drawn.',
+         'Black across all three pieces, which is Filmin’s territory and not Vogue’s: the promotion is told apart from editorial content at a glance.'],
+    vivo:[] }
+];
+
+/* el índice de trayectoria: la misma obra que la lista grande, en otra
+   presentación. Cada fila abre su ficha igual que arriba. */
+var tabla = document.getElementById('tabla');
+OBRA.slice(PRINCIPALES).forEach(function (p, k) {
+  var i = PRINCIPALES + k;
+  var li = document.createElement('li');
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'fila'; b.dataset.i = i;
+  b.innerHTML = '<span class="f-n"></span><span class="f-a"></span>';
+  b.children[0].textContent = p.n;
+  b.children[1].textContent = p.anio;
+  b.setAttribute('aria-label', 'Open ' + p.n);
+  b.addEventListener('click', function () { abre(i, b); });
+  li.appendChild(b); tabla.appendChild(li);
+});
+document.documentElement.style.setProperty('--filas', Math.ceil((OBRA.length - PRINCIPALES) / 2));
+/* los dos contadores salen de los datos: escribirlos a mano es garantía
+   de que se queden viejos en cuanto entre una ficha más */
+document.getElementById('cuenta-o').textContent = '(' + PRINCIPALES + ')';
+document.getElementById('cuenta-e').textContent = '(' + (OBRA.length - PRINCIPALES) + ')';
+
+function pad(n) { return ('0' + n).slice(-2); }
+
+var lista = document.getElementById('lista'), ficha = document.getElementById('ficha');
+var dNum = document.getElementById('d-num'), dCli = document.getElementById('d-cli'), dAnio = document.getElementById('d-anio');
+var piezas = [];
+OBRA.slice(0, PRINCIPALES).forEach(function (p, i) {
+  var li = document.createElement('li');
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'pieza'; b.dataset.i = i;
+  var s = document.createElement('span'); s.className = 'n'; s.textContent = p.n; b.appendChild(s);
+  b.setAttribute('aria-label', 'Open ' + p.n);
+  li.appendChild(b); lista.appendChild(li); piezas.push(b);
+});
+
+var activo = -1;
+function coloca() {
+  ficha.style.top = (lista.offsetTop + lista.offsetHeight + 26) + 'px';
+}
+coloca();
+/* la banda negra del cierre: en escritorio la sitúa el CSS; en flujo hay
+   que medir desde el titular hasta el final de la hoja */
+var banda = document.querySelector('.banda'), hoja = document.querySelector('.hoja');
+var cierre2 = document.querySelector('.cierre2');
+function pintaBanda() {
+  if (!banda || !cierre2 || !hoja) return;
+  if (window.innerWidth > 1180) { banda.style.removeProperty('--altoBanda'); return; }
+  banda.style.setProperty('--altoBanda', (hoja.offsetHeight - cierre2.offsetTop + 38) + 'px');
+}
+pintaBanda();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(pintaBanda);
+function activa(i) {
+  if (i === activo) return;
+  if (activo > -1) piezas[activo].classList.remove('viva');
+  activo = i;
+  var p = OBRA[i];
+  piezas[i].classList.add('viva');
+  lista.classList.add('abierta');
+  dNum.textContent = '(' + pad(i + 1) + ')';
+  dCli.textContent = p.cli; dAnio.textContent = '(' + p.anio + ')';
+  ficha.classList.add('puesta');
+  coloca();
+}
+function suelta() {
+  if (activo > -1) piezas[activo].classList.remove('viva');
+  activo = -1;
+  lista.classList.remove('abierta');
+  ficha.classList.remove('puesta');
+}
+
+
+var fino = window.matchMedia('(hover: hover) and (pointer: fine)');
+piezas.forEach(function (b, i) {
+  b.addEventListener('pointerenter', function () { if (fino.matches) activa(i); });
+  b.addEventListener('focus', function () { activa(i); });
+  b.addEventListener('click', function () { abre(i, b); });
+});
+lista.addEventListener('pointerleave', function () { if (fino.matches) suelta(); });
+
+/* sin puntero: manda la fila que cruza el centro */
+var pedido = 0;
+function mira() {
+  pedido = 0;
+  if (fino.matches || !piezas.length) return;
+  var caja = lista.getBoundingClientRect();
+  if (caja.bottom < 80 || caja.top > window.innerHeight - 80) { suelta(); return; }
+  var centro = window.innerHeight / 2, mejor = 0, min = Infinity;
+  piezas.forEach(function (b, i) {
+    var r = b.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - centro);
+    if (d < min) { min = d; mejor = i; }
+  });
+  activa(mejor);
+}
+function pide() { if (!pedido) pedido = requestAnimationFrame(mira); }
+window.addEventListener('scroll', function () { pide(); }, { passive: true });
+window.addEventListener('resize', function () { coloca(); pintaBanda(); pide(); }, { passive: true });
+
+/* =====================================================================
+   LA VENTANA
+   ===================================================================== */
+var ven = document.getElementById('ventana');
+var vTit = document.getElementById('v-tit'), vPos = document.getElementById('v-pos');
+var vCli = document.getElementById('v-cli'), vDis = document.getElementById('v-dis');
+var vPro = document.getElementById('v-pro'), vObra = document.getElementById('v-obra');
+var vDec = document.getElementById('v-dec'), vVivo = document.getElementById('v-vivo');
+var vNext = document.getElementById('v-next');
+var vPuntos = document.getElementById('v-puntos');
+var dentro = -1, vuelta = 0, desde = null;
+
+/* dos recorridos independientes: los seis destacados por un lado y el
+   índice de trayectoria por otro. Desde una ficha del índice no se pasa
+   a un destacado, ni al revés: son dos menús, no una lista corrida. */
+function grupo(i) {
+  return i < PRINCIPALES ? { a: 0, b: PRINCIPALES } : { a: PRINCIPALES, b: OBRA.length };
+}
+
+function pinta(i) {
+  var p = OBRA[i];
+  var g = grupo(i);
+  dentro = i;
+  vPos.textContent = '(' + pad(i - g.a + 1) + '/' + pad(g.b - g.a) + ')';
+  vTit.textContent = p.n + ' ';
+  var a = document.createElement('span'); a.className = 'anio'; a.textContent = '(' + p.anio + ')';
+  vTit.appendChild(a);
+  vCli.textContent = p.cli; vDis.textContent = p.dis; vPro.textContent = p.pro;
+
+  vObra.innerHTML = '';
+  vObra.style.display = p.mk.length ? '' : 'none';
+  p.mk.forEach(function (m) {
+    var tipo = m[2] || (m[1] < 0.8 ? 'tel' : 'esc');
+    var f = document.createElement('figure');
+    f.className = 'mk ' + tipo;
+    var v = document.createElement('span');
+    v.className = 'vent';
+    if (tipo === 'esc') { var b = document.createElement('b'); b.className = 'barra'; v.appendChild(b); }
+    var i = document.createElement('i');
+    i.style.setProperty('--r', m[1]);
+    i.style.backgroundImage = 'url(' + m[0] + ')';
+    i.setAttribute('role', 'img');
+    i.setAttribute('aria-label', p.n);
+    v.appendChild(i);
+    f.appendChild(v);
+    vObra.appendChild(f);
+  });
+  vObra.scrollLeft = 0;   /* cada ficha empieza por su primera pieza */
+  vPuntos.innerHTML = '';
+  vPuntos.classList.remove('hay');
+  if (p.mk.length > 1) {
+    p.mk.forEach(function (m, k) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Piece ' + (k + 1) + ' of ' + p.mk.length);
+      d.addEventListener('click', function () { aPieza(k); });
+      vPuntos.appendChild(d);
+    });
+    /* sólo valen si de verdad hay más ancho del que cabe */
+    requestAnimationFrame(function () {
+      vPuntos.classList.toggle('hay', vObra.scrollWidth > vObra.clientWidth + 4);
+      marcaPunto();
+    });
+  }
+
+  vDec.innerHTML = '';
+  p.dec.forEach(function (d) { var e = document.createElement('p'); e.textContent = d; vDec.appendChild(e); });
+  vVivo.innerHTML = '';
+  if (p.vivo.length) {
+    vVivo.appendChild(document.createTextNode('See it live: '));
+    p.vivo.forEach(function (v, k) {
+      var a2 = document.createElement('a'); a2.href = v[1]; a2.target = '_blank'; a2.rel = 'noopener'; a2.textContent = v[0];
+      vVivo.appendChild(a2);
+      if (k < p.vivo.length - 1) vVivo.appendChild(document.createTextNode('   '));
+    });
+  }
+  vNext.textContent = OBRA[g.a + ((i - g.a + 1) % (g.b - g.a))].n + ' →';
+  document.getElementById('v-ant').disabled = i === g.a;
+  document.getElementById('v-sig').disabled = i === g.b - 1;
+  try { history.replaceState(null, '', '#' + p.id); } catch (e) {}
+}
+
+/* la ventana nace de la fila que has pulsado y se abre a lo alto */
+function abre(i, b) {
+  if (!ven.classList.contains('abierta')) {
+    vuelta = window.scrollY || 0;
+    desde = b || piezas[i];
+    var r = desde ? desde.getBoundingClientRect() : null;
+    var c = r ? (r.top + r.height / 2) / window.innerHeight * 100 : 50;
+    c = Math.max(4, Math.min(96, c));
+    ven.style.setProperty('--arriba', c + '%');
+    ven.style.setProperty('--abajo', (100 - c) + '%');
+  }
+  pinta(i);
+  ven.scrollTop = 0;
+  requestAnimationFrame(function () {
+    ven.classList.add('abierta');
+    document.body.classList.add('trabado');
+  });
+  document.getElementById('v-x').focus({ preventScroll: true });
+}
+function cierra() {
+  ven.classList.remove('abierta');
+  document.body.classList.remove('trabado');
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  window.scrollTo(0, vuelta);
+  if (desde && desde.focus) desde.focus({ preventScroll: true });
+  dentro = -1;
+}
+document.getElementById('v-x').addEventListener('click', cierra);
+document.getElementById('v-x2').addEventListener('click', cierra);
+/* los puntos del montaje: centran la pieza que pides y marcan en cuál
+   estás, que es lo único que faltaba para que se note que hay más */
+function aPieza(k) {
+  var f = vObra.children[k];
+  if (!f) return;
+  vObra.scrollTo({ left: f.offsetLeft - (vObra.clientWidth - f.offsetWidth) / 2, behavior: 'smooth' });
+}
+function marcaPunto() {
+  var n = vPuntos.children.length;
+  if (!n) return;
+  var tope = vObra.scrollWidth - vObra.clientWidth;
+  var centro = vObra.scrollLeft + vObra.clientWidth / 2, mejor = 0, cerca = Infinity;
+  for (var i = 0; i < vObra.children.length; i++) {
+    var f = vObra.children[i], c = f.offsetLeft + f.offsetWidth / 2, d = Math.abs(c - centro);
+    if (d < cerca) { cerca = d; mejor = i; }
+  }
+  /* en los extremos la última pieza no llega a centrarse nunca, así que
+     el punto de la punta no se encendería jamás: se fuerza */
+  if (vObra.scrollLeft <= 1) mejor = 0;
+  else if (tope > 0 && vObra.scrollLeft >= tope - 1) mejor = n - 1;
+  for (var j = 0; j < n; j++) vPuntos.children[j].classList.toggle('on', j === mejor);
+}
+vObra.addEventListener('scroll', marcaPunto, { passive: true });
+window.addEventListener('resize', function () {
+  if (!vPuntos.children.length) return;
+  vPuntos.classList.toggle('hay', vObra.scrollWidth > vObra.clientWidth + 4);
+  marcaPunto();
+});
+
+function salta(d) {
+  var g = grupo(dentro);
+  var k = dentro + d;
+  if (k < g.a || k >= g.b) return;
+  pinta(k); ven.scrollTop = 0;
+}
+document.getElementById('v-sig').addEventListener('click', function () { salta(1); });
+document.getElementById('v-ant').addEventListener('click', function () { salta(-1); });
+vNext.addEventListener('click', function () {
+  var g = grupo(dentro);
+  pinta(g.a + ((dentro - g.a + 1) % (g.b - g.a)));
+  ven.scrollTop = 0;
+});
+document.addEventListener('keydown', function (e) {
+  if (!ven.classList.contains('abierta')) return;
+  if (e.key === 'Escape') cierra();
+  if (e.key === 'ArrowRight') salta(1);
+  if (e.key === 'ArrowLeft') salta(-1);
+});
+
+(function () {
+  var h = (location.hash || '').replace('#', '');
+  var i = OBRA.map(function (p) { return p.id; }).indexOf(h);
+  if (i > -1) abre(i, null);
+})();
+pide();
+
+
+/* ---- el menú en estrecho ---- */
+(function () {
+  var hamb = document.getElementById('hamb'), menu = document.getElementById('menu');
+  var cerrar = document.getElementById('menu-x');
+  if (!hamb || !menu) return;
+  function pon(v) {
+    menu.hidden = !v;
+    hamb.setAttribute('aria-expanded', String(v));
+    hamb.setAttribute('aria-label', v ? 'Close the menu' : 'Open the menu');
+    document.body.classList.toggle('trabado', v);
+    (v ? cerrar : hamb).focus({ preventScroll: true });
+  }
+  hamb.addEventListener('click', function () { pon(menu.hidden); });
+  cerrar.addEventListener('click', function () { pon(false); });
+  [].forEach.call(menu.querySelectorAll('.menu-nav a'), function (a) {
+    a.addEventListener('click', function () { pon(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) pon(false);
+  });
+  window.addEventListener('resize', function () { if (innerWidth > 1180 && !menu.hidden) pon(false); }, { passive: true });
+})();
+
+</script>

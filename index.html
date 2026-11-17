@@ -5,9 +5,13 @@
 <meta name="description" content="Dirección de arte, marca y producto digital. Hago producto digital, auditorías UX/UI y accesibilidad. Analizo procesos y los mejoro.">
 <meta name="author" content="Xabier Mauleón">
 <link rel="canonical" href="https://xabimauleon.netlify.app/">
+<link rel="alternate" hreflang="es" href="https://xabimauleon.netlify.app/">
+<link rel="alternate" hreflang="en" href="https://xabimauleon.netlify.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://xabimauleon.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Xabier Mauleón">
 <meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
 <meta property="og:url" content="https://xabimauleon.netlify.app/">
 <meta property="og:title" content="Xabier Mauleón — Dirección de arte, marca y producto digital">
 <meta property="og:description" content="Dirección de arte, marca y producto digital. Hago producto digital, auditorías UX/UI y accesibilidad. Analizo procesos y los mejoro.">
@@ -86,6 +90,8 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 .nav a{color:var(--hueso);text-decoration:none;transition:opacity 220ms ease}
 .nav a:hover,.nav a:focus-visible{opacity:.6;outline:none}
 .nav sup{font-size:9px;line-height:10px;vertical-align:super;margin-left:1px}
+.nav a.idioma{color:rgba(251,241,236,.62)}
+.nav a.idioma:hover,.nav a.idioma:focus-visible{color:var(--hueso);opacity:1}
 
 /* ---------- entrada ---------- */
 .r1{left:calc(var(--k) * 40);top:calc(var(--k) * 223)}
@@ -516,15 +522,12 @@ body.trabado{overflow:hidden}
   .marca{animation:respira 30s cubic-bezier(.45,0,.55,1) infinite alternate !important}
 }
 
-/* fuera del artefacto no hay esqueleto que ponga los márgenes seguros:
-   el gutter lateral nunca baja de su valor, pero crece si hay muesca */
+/* el margen lateral respeta la barra del sistema en los móviles con muesca */
 @media (max-width:1180px){
   .hoja{padding-left:max(var(--mx),env(safe-area-inset-left,0px));padding-right:max(var(--mx),env(safe-area-inset-right,0px))}
 }
 [hidden]{display:none !important}
 </style>
-</head>
-<body>
 
 <div class="hoja">
   <p class="firma">Xabier Mauleón</p>
@@ -533,6 +536,7 @@ body.trabado{overflow:hidden}
     <a href="#trabajo">Trabajos</a>
     <a href="#quien-soy">Sobre mí</a>
     <a href="#contacto">Contacto</a>
+    <a class="idioma" href="https://xabimauleon.netlify.app/en/" hreflang="en" lang="en">English</a>
   </nav>
   <button class="hamb" id="hamb" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir el menú">
     <span></span><span></span><span></span>
@@ -593,7 +597,7 @@ body.trabado{overflow:hidden}
   </nav>
   <div class="menu-pie">
     <p class="m-correo"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
-    <p class="m-leg"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV en PDF</a></p>
+    <p class="m-leg"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV en PDF</a>&nbsp;&nbsp;&nbsp;<a href="https://xabimauleon.netlify.app/en/" hreflang="en" lang="en">English</a></p>
   </div>
 </div>
 
@@ -1054,6 +1058,3 @@ pide();
 })();
 
 </script>
-
-</body>
-</html>
