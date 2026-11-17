@@ -1,0 +1,20 @@
+# Sitio estático: una sola página y sus recursos. No hay paso de compilación.
+[build]
+  publish = "."
+
+# Las rutas del sitio anterior no mueren en un 404.
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 301
+  force = false
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
