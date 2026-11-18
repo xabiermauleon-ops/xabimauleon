@@ -2,6 +2,16 @@
 [build]
   publish = "."
 
+# El subdominio de Netlify deja de servir el sitio en paralelo: manda al
+# dominio propio conservando la ruta, para no partir el posicionamiento en
+# dos direcciones con el mismo contenido. Va antes del comodín de abajo
+# porque Netlify aplica la primera regla que encaja.
+[[redirects]]
+  from = "https://xabimauleon.netlify.app/*"
+  to = "https://xabiermauleon.com/:splat"
+  status = 301
+  force = true
+
 # Las rutas del sitio anterior no mueren en un 404.
 [[redirects]]
   from = "/*"
