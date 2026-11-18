@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# El PDF del CV sí se indexa: es contenido, no un recurso interno.
+Sitemap: https://xabiermauleon.com/sitemap.xml
