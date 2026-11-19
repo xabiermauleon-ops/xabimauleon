@@ -156,11 +156,11 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 
 /* ---------- cierre ---------- */
 .cierre{margin:0;left:calc(var(--k) * 40);top:calc(var(--k) * 1640);font-size:calc(var(--k) * 76);line-height:calc(var(--k) * 80);letter-spacing:-0.045em;white-space:nowrap}
-.correo{margin:0;right:calc(var(--k) * 40);top:calc(var(--k) * 1715);font-size:calc(var(--k) * 22);line-height:calc(var(--k) * 25)}
-.correo a{color:var(--hueso);text-decoration:none}
-.correo a:hover,.correo a:focus-visible{text-decoration:underline;text-underline-offset:4px}
-.leg-a{left:calc(var(--k) * 40);top:calc(var(--k) * 1798)}
-.leg-b{right:calc(var(--k) * 40);top:calc(var(--k) * 1798)}
+/* los tres contactos bajan a la línea del párrafo y se apilan. El 1801
+   y no 1798: el párrafo va a 18/22 y estos a 15/17, así que las cajas
+   empiezan a la vez pero las bases no. Tres píxeles las cuadran. */
+.contactos{right:calc(var(--k) * 40);top:calc(var(--k) * 1801);text-align:right}
+.contactos .leg + .leg{margin-top:calc(var(--k) * 6)}
 .pie-texto{left:calc(var(--k) * 286);top:calc(var(--k) * 1798);width:calc(var(--k) * 606);color:rgba(251,241,236,.72)}
 
 /* ---------- segundo bloque: lo que no son casos, es trayectoria ---------- */
@@ -202,7 +202,7 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 .remate{left:calc(var(--k) * 40);right:calc(var(--k) * 40);bottom:calc(var(--k) * 54);width:auto}
 .remate-a{display:flex;justify-content:space-between;align-items:flex-end;gap:calc(var(--k) * 60)}
 .datos{text-align:right}
-.datos p{margin:0;font-size:calc(var(--k) * 18);line-height:calc(var(--k) * 30);letter-spacing:-0.012em}
+.datos p{margin:0;font-size:calc(var(--k) * 14);line-height:calc(var(--k) * 20);letter-spacing:-0.012em}
 .datos a{color:var(--hueso);text-decoration:none}
 .datos a:hover,.datos a:focus-visible{text-decoration:underline;text-underline-offset:4px}
 .remate-b{
@@ -379,10 +379,9 @@ body.trabado{overflow:hidden}
   .lista.abierta .pieza{color:rgba(251,241,236,.34)}
   .dato{display:none}
   .cierre{margin-top:52px;font-size:56px;line-height:62px;letter-spacing:-0.04em}
-  .correo{margin-top:14px;font-size:20px;line-height:26px}
   .leg{font-size:13px;line-height:17px}
-  .leg-a{margin-top:40px}
-  .leg-b{margin-top:6px}
+  .contactos{text-align:left;margin-top:26px}
+  .contactos .leg + .leg{margin-top:5px}
   .pie-texto{margin-top:26px}
   .cierre2{margin-top:72px;font-size:56px;line-height:62px;letter-spacing:-0.04em}
   .e1,.e2{display:inline-block;margin-top:34px}
@@ -401,7 +400,7 @@ body.trabado{overflow:hidden}
   .remate{margin-top:76px}
   .remate-a{display:block}
   .datos{text-align:left;margin-top:20px}
-  .datos p{font-size:17px;line-height:26px}
+  .datos p{font-size:15px;line-height:21px}
   .remate-b{margin-top:34px;padding-top:18px}
 
   /* --- la ventana del proyecto --- */
@@ -453,10 +452,9 @@ body.trabado{overflow:hidden}
   .pieza{font-size:26px;line-height:44px;letter-spacing:-0.02em}
   .pie{gap:10px;font-size:11px;line-height:16px}
   .cierre{margin-top:95px;font-size:32px;line-height:36px;letter-spacing:-0.04em}
-  .correo{margin-top:0;font-size:15px;line-height:21px}
   .leg{font-size:11px;line-height:15px}
-  .leg-a{margin-top:10px}
-  .leg-b{margin-top:5px}
+  .contactos{margin-top:17px}
+  .contactos .leg + .leg{margin-top:4px}
   .pie-texto{margin-top:17px}
   .cierre2{margin-top:89px;font-size:32px;line-height:36px;letter-spacing:-0.04em}
   .e1,.e2{margin-top:34px}
@@ -466,7 +464,7 @@ body.trabado{overflow:hidden}
   .f-a{font-size:12px;line-height:19px}
   .remate{margin-top:56px}
   .datos{margin-top:14px}
-  .datos p{font-size:14px;line-height:22px}
+  .datos p{font-size:14px;line-height:20px}
   .remate-b{display:block;margin-top:26px;padding-top:14px}
   .remate-b .leg + .leg{margin-top:5px}
   .v-caja h1{font-size:24px;line-height:26px}
@@ -668,9 +666,11 @@ body.trabado{overflow:hidden}
   <ul class="lista" id="lista"><li><button type="button" class="pieza" data-i="0" aria-label="Open IBMot Experience"><span class="n">IBMot Experience</span></button></li><li><button type="button" class="pieza" data-i="1" aria-label="Open Data visualisation"><span class="n">Data visualisation</span></button></li><li><button type="button" class="pieza" data-i="2" aria-label="Open Stores"><span class="n">Stores</span></button></li><li><button type="button" class="pieza" data-i="3" aria-label="Open Hotel Jorge Juan"><span class="n">Hotel Jorge Juan</span></button></li><li><button type="button" class="pieza" data-i="4" aria-label="Open Floreig Festival"><span class="n">Floreig Festival</span></button></li><li><button type="button" class="pieza" data-i="5" aria-label="Open PhysioGo audit"><span class="n">PhysioGo audit</span></button></li></ul>
 
   <p class="cierre" id="contacto">Let’s talk.</p>
-  <p class="correo"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
-  <p class="leg leg-a">© 2026 Xabier Mauleón</p>
-  <p class="leg leg-b"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabiermauleon.com/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+  <div class="contactos">
+    <p class="leg"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
+    <p class="leg"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a></p>
+    <p class="leg"><a href="https://xabiermauleon.com/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+  </div>
   <div class="pie-texto"><p class="parrafo">I have designed for Vogue, GQ, Vanity Fair, S Moda and Glamour. I have led creative teams, directed campaigns for international clients and built digital product platforms from nothing. At Condé Nast I developed the digital subscription system on Shopify Plus for five titles across Spain, the Middle East and India — with direct impact on conversion and revenue.</p></div>
 
   <div class="banda" aria-hidden="true"></div>
