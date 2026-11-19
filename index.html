@@ -41,7 +41,12 @@
   --suelo:#887D72;
   --negro:#0C0B0A;
   --hueso:#FBF1EC;
-  --k:clamp(0.42px,0.06944vw,1.9px);   /* 1 a 1440; la hoja sigue llenando la pantalla hasta 2736 */
+  --k:clamp(0.42px,0.06944vw,1.9px);
+  /* el cuadro del que nace el panel: deja las barras a 40 del borde derecho
+     y a 46 del superior, que es donde estaban las palabras del menú */
+  --mAl:calc(var(--k) * 46);
+  --mAr:calc(var(--k) * 30);
+  --mAt:calc(var(--k) * 32);   /* 1 a 1440; la hoja sigue llenando la pantalla hasta 2736 */
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -86,12 +91,6 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 /* ---------- barra ---------- */
 .firma{left:calc(var(--k) * 40);top:calc(var(--k) * 26);font-size:calc(var(--k) * 15);font-weight:600;line-height:calc(var(--k) * 17);margin:0}
 .oficio{left:calc(var(--k) * 40);top:calc(var(--k) * 45);font-size:calc(var(--k) * 13);line-height:calc(var(--k) * 15);margin:0;color:rgba(251,241,236,.72)}
-.nav{right:calc(var(--k) * 40);top:calc(var(--k) * 46);display:flex;gap:calc(var(--k) * 30);font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17)}
-.nav a{color:var(--hueso);text-decoration:none;transition:opacity 220ms ease}
-.nav a:hover,.nav a:focus-visible{opacity:.6;outline:none}
-.nav sup{font-size:9px;line-height:10px;vertical-align:super;margin-left:1px}
-.nav a.idioma{color:rgba(251,241,236,.62)}
-.nav a.idioma:hover,.nav a.idioma:focus-visible{color:var(--hueso);opacity:1}
 
 /* ---------- entrada ---------- */
 .r1{left:calc(var(--k) * 40);top:calc(var(--k) * 223)}
@@ -330,14 +329,13 @@ body.trabado{overflow:hidden}
   :root{--mx:48px;--arr:40px;--aba:72px}
   .firma{font-size:15px;line-height:19px}
   .oficio{display:block;font-size:13px;line-height:17px;margin-top:1px}
-  /* el menú sube a la derecha, en línea con la firma, igual que en escritorio */
-  .nav{display:none}
-  .hoja > .hamb{
-    display:block;position:absolute;right:var(--mx);top:calc(var(--arr) + 11px);z-index:6;
-    width:22px;height:15px;padding:0;border:0;background:none;cursor:pointer;
-  }
-  .hamb span{display:block;height:1.5px;background:var(--hueso)}
+  /* el ancla del panel pasa a píxeles: las barras quedan donde estaban,
+     a la altura de la firma y contra el margen derecho */
+  :root{--mAl:44px;--mAr:calc(var(--mx) - 11px);--mAt:calc(var(--arr) + 3px)}
+  .hamb span{width:22px;height:1.5px}
   .hamb span + span{margin-top:5.25px}
+  .menu-abierto .hamb span:nth-child(1){transform:translateY(6.75px) rotate(45deg)}
+  .menu-abierto .hamb span:nth-child(3){transform:translateY(-6.75px) rotate(-45deg)}
   /* el retrato sube a la esquina derecha, a la altura de la firma, y la
      columna de la izquierda corre a su lado: así no queda el hueco */
   .retrato{position:absolute;right:var(--mx);top:110px;width:180px;height:232px;margin-top:0;filter:grayscale(1);z-index:1}
@@ -408,12 +406,12 @@ body.trabado{overflow:hidden}
   /* Clavado al frame «Móvil · 390 — v4»: cada margen es la diferencia
      entre la coordenada del Figma y el final del bloque anterior */
   :root{--mx:22px;--arr:17px;--aba:32px}
-  .hoja > .hamb{top:calc(var(--arr) + 8px);width:22px;height:16px}
   .hamb span{height:2px}
   .hamb span + span{margin-top:5px}
+  .menu-abierto .hamb span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-abierto .hamb span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .firma{font-size:14px;line-height:18px}
   .oficio{font-size:11px;line-height:15px;margin-top:-3px}
-  .nav{top:var(--arr);gap:14px;font-size:12px;line-height:16px}
   .retrato{top:72px;width:84px;height:109px}
   .rot{font-size:12px;line-height:16px}
   .r1{margin-top:126px}
@@ -461,29 +459,86 @@ body.trabado{overflow:hidden}
    190 px de alto. El panel va en negro, como todo lo que se despliega
    en este site, y cada entrada dice adónde lleva.
    --------------------------------------------------------------- */
-.hamb{display:none}
-.menu[hidden]{display:none}
-.menu{
-  position:fixed;inset:0;z-index:500;background:var(--negro);color:var(--hueso);
-  display:flex;flex-direction:column;
-  padding:34px max(22px,env(safe-area-inset-right,0px)) max(30px,env(safe-area-inset-bottom,0px)) max(22px,env(safe-area-inset-left,0px));
-  padding-top:max(34px,env(safe-area-inset-top,0px));
-  animation:menuEntra 320ms cubic-bezier(.16,.86,.24,1) both;
+/* El botón vive en el mismo cuadro de 46 desde el que crece el panel, para
+   que el despliegue arranque exactamente de él y no de una esquina cualquiera.
+   --mAr y --mAt dejan las barras donde estaba el menú de palabras: a 40 del
+   borde derecho y a 46 del superior. */
+.hamb{
+  position:absolute;z-index:620;display:grid;place-content:center;
+  right:var(--mAr);top:var(--mAt);width:var(--mAl);height:var(--mAl);
+  padding:0;border:0;background:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
-@keyframes menuEntra{from{opacity:0}to{opacity:1}}
+.hamb span{
+  display:block;width:calc(var(--k) * 26);height:calc(var(--k) * 2);
+  background:var(--hueso);
+  transition:transform 420ms cubic-bezier(.16,.86,.24,1),opacity 200ms ease;
+}
+.hamb span + span{margin-top:calc(var(--k) * 6)}
+.hamb:focus-visible{outline:2px solid var(--hueso);outline-offset:4px}
+/* abierto, las tres barras se cruzan: el mismo botón cierra */
+.menu-abierto .hamb span:nth-child(1){transform:translateY(calc(var(--k) * 8)) rotate(45deg)}
+.menu-abierto .hamb span:nth-child(2){opacity:0}
+.menu-abierto .hamb span:nth-child(3){transform:translateY(calc(var(--k) * -8)) rotate(-45deg)}
+/* ---------- el menú ----------
+   El panel no aparece: crece desde el botón. Primero se estira a lo ancho,
+   después cae hacia abajo, y el contenido entra al final, cuando la caja ya
+   está hecha. Al cerrar, el orden se invierte. Es el mismo mecanismo del
+   sitio de corrupción: un rectángulo de 46 con las esquinas redondeadas que
+   se convierte en la caja entera. */
+.menu{position:fixed;inset:0;z-index:600;visibility:hidden;pointer-events:none}
+.menu-abierto .menu{visibility:visible;pointer-events:auto}
 .menu a{color:inherit;text-decoration:none}
-.menu-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.m-firma{margin:0;font-size:14px;line-height:18px;font-weight:600}
-.m-oficio{margin:1px 0 0;font-size:11px;line-height:15px;color:rgba(251,241,236,.72)}
-.menu-x{
-  appearance:none;border:0;background:none;color:var(--hueso);font:inherit;
-  font-size:13px;line-height:18px;padding:0;cursor:pointer;
-  text-decoration:underline;text-underline-offset:3px;
+
+.menu-velo{position:absolute;inset:0;background:rgba(12,11,10,0);
+  transition:background-color 450ms ease 500ms}
+.menu-abierto .menu-velo{background:rgba(12,11,10,.34);transition:background-color 450ms ease}
+
+.menu-caja{
+  position:absolute;top:var(--mAt);right:var(--mAr);
+  width:min(clamp(380px,34vw,560px),calc(100vw - var(--mAr) * 2));
+  height:calc(100dvh - var(--mAt) * 2);
 }
+.menu-fondo{
+  position:absolute;top:0;right:0;width:var(--mAl);height:var(--mAl);
+  border-radius:18px;background:rgba(12,11,10,0);
+  transition:height 500ms cubic-bezier(.25,.46,.45,.94) 250ms,
+             width 400ms cubic-bezier(.25,.46,.45,.94) 650ms,
+             background-color 300ms ease 950ms;
+}
+.menu-abierto .menu-fondo{
+  width:100%;height:100%;background:var(--negro);
+  transition:width 400ms cubic-bezier(.25,.46,.45,.94),
+             height 600ms cubic-bezier(.25,.46,.45,.94) 300ms,
+             background-color 200ms ease;
+}
+.menu-dentro{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:space-between;color:var(--hueso);
+  padding:calc(var(--mAl) + 26px) 30px 28px;
+  opacity:0;transition:opacity 250ms ease;
+}
+.menu-abierto .menu-dentro{opacity:1;transition:opacity 350ms ease 900ms}
+
 .menu-nav{margin:auto 0;border-bottom:1px solid rgba(251,241,236,.22)}
-.menu-nav a{display:block;border-top:1px solid rgba(251,241,236,.22);padding:26px 0 22px;color:var(--hueso)}
-.menu-nav b{display:block;font-size:32px;line-height:36px;font-weight:500;letter-spacing:-0.03em}
-.menu-nav em{display:block;margin-top:9px;font-style:normal;font-size:12px;line-height:16px;color:rgba(251,241,236,.52)}
+.menu-nav a{display:block;border-top:1px solid rgba(251,241,236,.22);padding:22px 0 19px;color:var(--hueso)}
+.menu-nav b{display:block;font-size:clamp(26px,2.4vw,36px);line-height:1.12;font-weight:500;letter-spacing:-0.03em}
+.menu-nav em{display:block;margin-top:7px;font-style:normal;font-size:12px;line-height:16px;color:rgba(251,241,236,.52)}
+/* Los ajustes del panel por anchura van aquí, después de su definición base:
+   puestos arriba, junto al resto de medias, quedaban pisados por ella. */
+@media (max-width:1180px){
+  .menu-caja{width:min(clamp(380px,56vw,560px),calc(100vw - var(--mAr) * 2))}
+}
+@media (max-width:560px){
+  /* en el móvil la caja ocupa casi todo, pero su esquina sigue siendo la del
+     botón: si se fuerza a 8px, el panel deja de nacer de él */
+  .menu-caja{width:calc(100vw - var(--mAr) * 2);height:calc(100dvh - var(--mAt) * 2)}
+  .menu-dentro{padding:66px 22px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .menu-fondo,.menu-abierto .menu-fondo,.menu-dentro,.menu-abierto .menu-dentro,.hamb span{
+    transition-duration:.01s !important;transition-delay:0s !important}
+}
 .menu-pie .m-correo{margin:0;font-size:15px;line-height:21px}
 .menu-pie .m-leg{margin:6px 0 0;font-size:11px;line-height:15px;color:rgba(251,241,236,.72)}
 .menu-pie .m-leg a{text-decoration:underline;text-underline-offset:3px}
@@ -534,12 +589,6 @@ body.trabado{overflow:hidden}
 <div class="hoja">
   <p class="firma">Xabier Mauleón</p>
   <p class="oficio">Design Lead de producto digital</p>
-  <nav class="nav" aria-label="Principal">
-    <a href="#trabajo">Trabajos</a>
-    <a href="#quien-soy">Sobre mí</a>
-    <a href="#contacto">Contacto</a>
-    <a class="idioma" href="https://xabiermauleon.com/en/" hreflang="en" lang="en">English</a>
-  </nav>
   <button class="hamb" id="hamb" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir el menú">
     <span></span><span></span><span></span>
   </button>
@@ -584,14 +633,11 @@ body.trabado{overflow:hidden}
   <p class="rot e1">Trayectoria</p>
   <p class="rot e2" id="cuenta-e">(14)</p>
   <ul class="tabla" id="tabla"><li><button type="button" class="fila" data-i="6" aria-label="Abrir S Moda — El País"><span class="f-n">S Moda — El País</span><span class="f-a">2011–2016</span></button></li><li><button type="button" class="fila" data-i="7" aria-label="Abrir Johnnie Walker — Letras District"><span class="f-n">Johnnie Walker — Letras District</span><span class="f-a">2021</span></button></li><li><button type="button" class="fila" data-i="8" aria-label="Abrir UX/UI — Condé Nast College"><span class="f-n">UX/UI — Condé Nast College</span><span class="f-a">2023</span></button></li><li><button type="button" class="fila" data-i="9" aria-label="Abrir VFNI — Vogue Fashion Night In"><span class="f-n">VFNI — Vogue Fashion Night In</span><span class="f-a">2021</span></button></li><li><button type="button" class="fila" data-i="10" aria-label="Abrir Vogue Voices &amp; GQ Community"><span class="f-n">Vogue Voices &amp; GQ Community</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="11" aria-label="Abrir Vogue Business × Santander"><span class="f-n">Vogue Business × Santander</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="12" aria-label="Abrir Flujo del departamento de publicidad"><span class="f-n">Flujo del departamento de publicidad</span><span class="f-a">2017</span></button></li><li><button type="button" class="fila" data-i="13" aria-label="Abrir Rich Media — CNX"><span class="f-n">Rich Media — CNX</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="14" aria-label="Abrir Decir las cosas"><span class="f-n">Decir las cosas</span><span class="f-a">2024</span></button></li><li><button type="button" class="fila" data-i="15" aria-label="Abrir Conversaciones Traveler"><span class="f-n">Conversaciones Traveler</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="16" aria-label="Abrir El Mercado de las Flores de Vogue"><span class="f-n">El Mercado de las Flores de Vogue</span><span class="f-a">2018–2021</span></button></li><li><button type="button" class="fila" data-i="17" aria-label="Abrir Mapas para no perderse"><span class="f-n">Mapas para no perderse</span><span class="f-a">2019</span></button></li><li><button type="button" class="fila" data-i="18" aria-label="Abrir L’Oréal Paris — Tu belleza es tendencia"><span class="f-n">L’Oréal Paris — Tu belleza es tendencia</span><span class="f-a">2019</span></button></li><li><button type="button" class="fila" data-i="19" aria-label="Abrir Vogue × Filmin"><span class="f-n">Vogue × Filmin</span><span class="f-a">2022</span></button></li></ul>
-<div class="menu" id="menu" hidden>
-  <div class="menu-top">
-    <div>
-      <p class="m-firma">Xabier Mauleón</p>
-      <p class="m-oficio">Design Lead de producto digital</p>
-    </div>
-    <button class="menu-x" id="menu-x" type="button">Cerrar</button>
-  </div>
+<div class="menu" id="menu">
+  <div class="menu-velo" id="menu-velo"></div>
+  <div class="menu-caja" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="menu-fondo"></div>
+  <div class="menu-dentro">
   <nav class="menu-nav" aria-label="Principal">
     <a href="#quien-soy"><b>Sobre mí</b><em>Quién soy y cómo trabajo</em></a>
     <a href="#trabajo"><b>Trabajos</b><em>Seis proyectos</em></a>
@@ -600,6 +646,8 @@ body.trabado{overflow:hidden}
   <div class="menu-pie">
     <p class="m-correo"><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
     <p class="m-leg"><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://xabiermauleon.com/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV en PDF</a>&nbsp;&nbsp;&nbsp;<a href="https://xabiermauleon.com/en/" hreflang="en" lang="en">English</a></p>
+  </div>
+  </div>
   </div>
 </div>
 
@@ -1041,24 +1089,30 @@ pide();
 /* ---- el menú en estrecho ---- */
 (function () {
   var hamb = document.getElementById('hamb'), menu = document.getElementById('menu');
-  var cerrar = document.getElementById('menu-x');
+  var velo = document.getElementById('menu-velo');
   if (!hamb || !menu) return;
+  var raiz = document.documentElement;
+  function abierto() { return raiz.classList.contains('menu-abierto'); }
   function pon(v) {
-    menu.hidden = !v;
+    raiz.classList.toggle('menu-abierto', v);
     hamb.setAttribute('aria-expanded', String(v));
     hamb.setAttribute('aria-label', v ? 'Cerrar el menú' : 'Abrir el menú');
     document.body.classList.toggle('trabado', v);
-    (v ? cerrar : hamb).focus({ preventScroll: true });
+    /* el contenido entra a los 900 ms: el foco espera a que esté ahí */
+    if (v) setTimeout(function () {
+      var p = menu.querySelector('.menu-nav a');
+      if (p && abierto()) p.focus({ preventScroll: true });
+    }, 920);
+    else hamb.focus({ preventScroll: true });
   }
-  hamb.addEventListener('click', function () { pon(menu.hidden); });
-  cerrar.addEventListener('click', function () { pon(false); });
-  [].forEach.call(menu.querySelectorAll('.menu-nav a'), function (a) {
+  hamb.addEventListener('click', function () { pon(!abierto()); });
+  velo.addEventListener('click', function () { pon(false); });
+  [].forEach.call(menu.querySelectorAll('.menu-nav a, .menu-pie a'), function (a) {
     a.addEventListener('click', function () { pon(false); });
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !menu.hidden) pon(false);
+    if (e.key === 'Escape' && abierto()) pon(false);
   });
-  window.addEventListener('resize', function () { if (innerWidth > 1180 && !menu.hidden) pon(false); }, { passive: true });
 })();
 
 </script>
