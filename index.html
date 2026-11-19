@@ -476,6 +476,22 @@ body.trabado{overflow:hidden}
 }
 .hamb span + span{margin-top:calc(var(--k) * 6)}
 .hamb:focus-visible{outline:2px solid var(--hueso);outline-offset:4px}
+
+/* El conmutador de idioma vive a la izquierda del botón, colgado del mismo
+   ancla: le doy la altura del cuadro y lo centro, y así queda alineado con
+   las barras en todas las anchuras sin cuentas a mano. */
+.idioma{
+  position:absolute;z-index:620;
+  right:calc(var(--mAr) + var(--mAl) + var(--k) * 10);
+  top:var(--mAt);height:var(--mAl);
+  display:flex;align-items:center;
+  font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17);
+  color:rgba(251,241,236,.62);text-decoration:none;
+  transition:color 220ms ease;
+}
+.idioma:hover,.idioma:focus-visible{color:var(--hueso);outline:none}
+.idioma:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.menu-abierto .idioma{opacity:0;pointer-events:none;transition:opacity 180ms ease}
 /* abierto, las tres barras se cruzan: el mismo botón cierra */
 .menu-abierto .hamb span:nth-child(1){transform:translateY(calc(var(--k) * 8)) rotate(45deg)}
 .menu-abierto .hamb span:nth-child(2){opacity:0}
@@ -528,8 +544,10 @@ body.trabado{overflow:hidden}
    puestos arriba, junto al resto de medias, quedaban pisados por ella. */
 @media (max-width:1180px){
   .menu-caja{width:min(clamp(380px,56vw,560px),calc(100vw - var(--mAr) * 2))}
+  .idioma{right:calc(var(--mAr) + var(--mAl) + 8px);font-size:13px;line-height:17px}
 }
 @media (max-width:560px){
+  .idioma{font-size:12px;line-height:16px}
   /* en el móvil la caja ocupa casi todo, pero su esquina sigue siendo la del
      botón: si se fuerza a 8px, el panel deja de nacer de él */
   .menu-caja{width:calc(100vw - var(--mAr) * 2);height:calc(100dvh - var(--mAt) * 2)}
@@ -589,6 +607,7 @@ body.trabado{overflow:hidden}
 <div class="hoja">
   <p class="firma">Xabier Mauleón</p>
   <p class="oficio">Design Lead de producto digital</p>
+  <a class="idioma" href="https://xabiermauleon.com/en/" hreflang="en" lang="en">English</a>
   <button class="hamb" id="hamb" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir el menú">
     <span></span><span></span><span></span>
   </button>
