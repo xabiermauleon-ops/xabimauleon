@@ -64,8 +64,8 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
    su anchura de diseño y se centra en vez de quedarse pegada a la izquierda */
 .hoja{
   position:relative;width:calc(var(--k) * 1440);max-width:100%;margin:0 auto;overflow:visible;
-  /* 2369 hasta el índice + las filas que haya (60 escalados y el filete de 1 px) + 130 de aire */
-  height:calc(var(--k) * 2369 + var(--filas,3) * (var(--k) * 60 + 1px) + var(--k) * 130);
+  /* 2369 hasta el índice + las filas que haya (60 escalados y el filete de 1 px) + 401 del remate */
+  height:calc(var(--k) * 2369 + var(--filas,3) * (var(--k) * 60 + 1px) + var(--k) * 401);
 }
 .hoja > *{position:absolute;z-index:1}
 
@@ -196,6 +196,20 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
   font-weight:400;letter-spacing:0;color:rgba(251,241,236,.52);font-variant-numeric:tabular-nums;
 }
 .fila:focus-visible{outline:2px solid var(--hueso);outline-offset:2px}
+/* ---------- remate: la marca cierra la hoja ----------
+   anclado al pie de la hoja y no a una coordenada, porque el índice de
+   arriba crece o mengua con el número de experiencias */
+.remate{left:calc(var(--k) * 40);right:calc(var(--k) * 40);bottom:calc(var(--k) * 54);width:auto}
+.remate-a{display:flex;justify-content:space-between;align-items:flex-end;gap:calc(var(--k) * 60)}
+.datos{text-align:right}
+.datos p{margin:0;font-size:calc(var(--k) * 18);line-height:calc(var(--k) * 30);letter-spacing:-0.012em}
+.datos a{color:var(--hueso);text-decoration:none}
+.datos a:hover,.datos a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.remate-b{
+  display:flex;justify-content:space-between;gap:calc(var(--k) * 24);
+  margin-top:calc(var(--k) * 46);padding-top:calc(var(--k) * 22);
+  border-top:1px solid rgba(251,241,236,.22);
+}
 .leg{margin:0;font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17);color:rgba(251,241,236,.72)}
 .leg a{color:inherit;text-decoration:none}
 .leg a:hover{text-decoration:underline}
@@ -322,7 +336,7 @@ body.trabado{overflow:hidden}
    ===================================================================== */
 @media (max-width:1180px){
   .hoja{height:auto;padding:var(--arr) var(--mx) var(--aba)}
-  .hoja > *{position:relative;z-index:1;left:auto;right:auto;top:auto;width:auto;white-space:normal}
+  .hoja > *{position:relative;z-index:1;left:auto;right:auto;top:auto;bottom:auto;width:auto;white-space:normal}
   .masa-marco{position:absolute;left:4%;width:92%;top:0;bottom:0;z-index:0}
 
   /* --- vertical (tableta) --- */
@@ -382,6 +396,13 @@ body.trabado{overflow:hidden}
   }
   .f-n{font-size:18px;line-height:23px}
   .f-a{font-size:14px;line-height:19px}
+  /* el remate se apila: aquí no caben la marca y los datos enfrentados
+     sin dejar uno de los dos en un cuerpo ridículo */
+  .remate{margin-top:76px}
+  .remate-a{display:block}
+  .datos{text-align:left;margin-top:20px}
+  .datos p{font-size:17px;line-height:26px}
+  .remate-b{margin-top:34px;padding-top:18px}
 
   /* --- la ventana del proyecto --- */
   .v-barra,.v-caja{padding-left:var(--mx);padding-right:var(--mx)}
@@ -443,6 +464,11 @@ body.trabado{overflow:hidden}
   .fila{gap:14px;padding:14px 0 12px}
   .f-n{font-size:14px;line-height:19px}
   .f-a{font-size:12px;line-height:19px}
+  .remate{margin-top:56px}
+  .datos{margin-top:14px}
+  .datos p{font-size:14px;line-height:22px}
+  .remate-b{display:block;margin-top:26px;padding-top:14px}
+  .remate-b .leg + .leg{margin-top:5px}
   .v-caja h1{font-size:24px;line-height:26px}
   .v-pro{font-size:18px;line-height:24px}
   .v-dec p{font-size:15px;line-height:20px}
@@ -652,6 +678,21 @@ body.trabado{overflow:hidden}
   <p class="rot e1">Career</p>
   <p class="rot e2" id="cuenta-e">(14)</p>
   <ul class="tabla" id="tabla"><li><button type="button" class="fila" data-i="6" aria-label="Open S Moda — El País"><span class="f-n">S Moda — El País</span><span class="f-a">2011–2016</span></button></li><li><button type="button" class="fila" data-i="7" aria-label="Open Johnnie Walker — Letras District"><span class="f-n">Johnnie Walker — Letras District</span><span class="f-a">2021</span></button></li><li><button type="button" class="fila" data-i="8" aria-label="Open UX/UI — Condé Nast College"><span class="f-n">UX/UI — Condé Nast College</span><span class="f-a">2023</span></button></li><li><button type="button" class="fila" data-i="9" aria-label="Open VFNI — Vogue Fashion Night In"><span class="f-n">VFNI — Vogue Fashion Night In</span><span class="f-a">2021</span></button></li><li><button type="button" class="fila" data-i="10" aria-label="Open Vogue Voices &amp; GQ Community"><span class="f-n">Vogue Voices &amp; GQ Community</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="11" aria-label="Open Vogue Business × Santander"><span class="f-n">Vogue Business × Santander</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="12" aria-label="Open Advertising department workflow"><span class="f-n">Advertising department workflow</span><span class="f-a">2017</span></button></li><li><button type="button" class="fila" data-i="13" aria-label="Open Rich Media — CNX"><span class="f-n">Rich Media — CNX</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="14" aria-label="Open Decir las cosas"><span class="f-n">Decir las cosas</span><span class="f-a">2024</span></button></li><li><button type="button" class="fila" data-i="15" aria-label="Open Conversaciones Traveler"><span class="f-n">Conversaciones Traveler</span><span class="f-a">2020</span></button></li><li><button type="button" class="fila" data-i="16" aria-label="Open El Mercado de las Flores de Vogue"><span class="f-n">El Mercado de las Flores de Vogue</span><span class="f-a">2018–2021</span></button></li><li><button type="button" class="fila" data-i="17" aria-label="Open Maps not to get lost by"><span class="f-n">Maps not to get lost by</span><span class="f-a">2019</span></button></li><li><button type="button" class="fila" data-i="18" aria-label="Open L’Oréal Paris — Tu belleza es tendencia"><span class="f-n">L’Oréal Paris — Tu belleza es tendencia</span><span class="f-a">2019</span></button></li><li><button type="button" class="fila" data-i="19" aria-label="Open Vogue × Filmin"><span class="f-n">Vogue × Filmin</span><span class="f-a">2022</span></button></li></ul>
+
+  <div class="remate">
+    <div class="remate-a">
+      <p class="gigante">XMP®</p>
+      <div class="datos">
+        <p><a href="mailto:xabier.mauleon@gmail.com">xabier.mauleon@gmail.com</a></p>
+        <p><a href="tel:+34607323642">+34 607 323 642</a></p>
+        <p><a href="https://www.linkedin.com/in/xabiermauleon" target="_blank" rel="noopener">linkedin.com/in/xabiermauleon</a></p>
+      </div>
+    </div>
+    <div class="remate-b">
+      <p class="leg">© 2026 Xabier Mauleón · Madrid</p>
+      <p class="leg"><a href="https://xabiermauleon.com/cv-xabier-mauleon.pdf" target="_blank" rel="noopener">CV (PDF)</a>&nbsp;&nbsp;&nbsp;<a href="https://xabiermauleon.com/" hreflang="es" lang="es">Español</a></p>
+    </div>
+  </div>
 <div class="menu" id="menu">
   <div class="menu-velo" id="menu-velo"></div>
   <div class="menu-caja" role="dialog" aria-modal="true" aria-label="Menú">
