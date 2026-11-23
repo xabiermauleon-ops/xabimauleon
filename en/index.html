@@ -487,18 +487,27 @@ body.trabado{overflow:hidden}
    que el despliegue arranque exactamente de él y no de una esquina cualquiera.
    --mAr y --mAt dejan las barras donde estaba el menú de palabras: a 40 del
    borde derecho y a 46 del superior. */
+/* El cuadro de 46 sigue donde estaba, porque de él nace el panel. Lo que
+   se recoloca es el icono dentro: centrado en el cuadro caía en 55 y el
+   bloque de la izquierda —firma y oficio— se centra en 43. El área de
+   clic no se mueve; se mueve lo que se ve. */
 .hamb{
-  position:absolute;z-index:620;display:grid;place-content:center;
+  position:absolute;z-index:620;display:grid;place-content:start center;
   right:var(--mAr);top:var(--mAt);width:var(--mAl);height:var(--mAl);
-  padding:0;border:0;background:none;cursor:pointer;
+  padding:calc(var(--k) * 11 - 9px) 0 0;border:0;background:none;cursor:pointer;
   -webkit-tap-highlight-color:transparent;
 }
+/* El icono no escala con --k, a diferencia del resto de la hoja. Con el
+   trazo escalado cada raya medía 2,09 px y el paso entre ellas 8,39, así
+   que las tres caían sobre fracciones de píxel distintas y el navegador
+   las pintaba con grosores aparentes distintos. En píxeles enteros las
+   tres comparten la misma fracción y se ven idénticas. */
 .hamb span{
-  display:block;width:calc(var(--k) * 26);height:calc(var(--k) * 2);
+  display:block;width:26px;height:2px;
   background:var(--hueso);
   transition:transform 420ms cubic-bezier(.16,.86,.24,1),opacity 200ms ease;
 }
-.hamb span + span{margin-top:calc(var(--k) * 6)}
+.hamb span + span{margin-top:6px}
 .hamb:focus-visible{outline:2px solid var(--hueso);outline-offset:4px}
 
 /* El conmutador de idioma vive a la izquierda del botón, colgado del mismo
@@ -507,7 +516,7 @@ body.trabado{overflow:hidden}
 .idioma{
   position:absolute;z-index:620;
   right:calc(var(--mAr) + var(--mAl) + var(--k) * 10);
-  top:var(--mAt);height:var(--mAl);
+  top:var(--mAt);height:calc(var(--k) * 22);
   display:flex;align-items:center;
   font-size:calc(var(--k) * 15);line-height:calc(var(--k) * 17);
   color:rgba(251,241,236,.62);text-decoration:none;
@@ -517,9 +526,9 @@ body.trabado{overflow:hidden}
 .idioma:focus-visible{text-decoration:underline;text-underline-offset:4px}
 .menu-abierto .idioma{opacity:0;pointer-events:none;transition:opacity 180ms ease}
 /* abierto, las tres barras se cruzan: el mismo botón cierra */
-.menu-abierto .hamb span:nth-child(1){transform:translateY(calc(var(--k) * 8)) rotate(45deg)}
+.menu-abierto .hamb span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .menu-abierto .hamb span:nth-child(2){opacity:0}
-.menu-abierto .hamb span:nth-child(3){transform:translateY(calc(var(--k) * -8)) rotate(-45deg)}
+.menu-abierto .hamb span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 /* ---------- el menú ----------
    El panel no aparece: crece desde el botón. Primero se estira a lo ancho,
    después cae hacia abajo, y el contenido entra al final, cuando la caja ya
@@ -617,6 +626,29 @@ body.trabado{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce) and (max-width:1180px){
   .marca{animation:respira 30s cubic-bezier(.45,0,.55,1) infinite alternate !important}
+}
+
+/* ---------------------------------------------------------------
+   LA BARRA DE ARRIBA EN TABLETA Y MÓVIL
+   Van al final de la hoja a propósito: las reglas base del icono se
+   declaran más abajo que las medias de arriba y las ganaban por orden.
+   Aquí el icono recupera su tamaño propio y el conjunto se centra con
+   el bloque de la firma, que es con lo que el ojo lo compara.
+   --------------------------------------------------------------- */
+@media (max-width:1180px){
+  /* icono de 22 × 16 con trazo y paso enteros: 2 y 7 */
+  .hamb span{width:22px;height:2px}
+  .hamb span + span{margin-top:5px}
+  .hamb{padding-top:7px}
+  .menu-abierto .hamb span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-abierto .hamb span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .idioma{height:30px}
+}
+@media (max-width:560px){
+  .hamb span{width:26px;height:2px}
+  .hamb span + span{margin-top:5px}
+  .hamb{padding-top:4px}
+  .idioma{height:24px}
 }
 
 :root{--filas:7}
